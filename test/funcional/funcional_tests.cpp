@@ -7,6 +7,7 @@
 
 using namespace std;
 
+// Function for exponential functional test.
 void exponentialFuncionalTest(){
     cout << "TESTE 4 - modelo simples com equacao exponencial" << endl;
 
@@ -28,6 +29,7 @@ void exponentialFuncionalTest(){
     cout << "OK" << endl;
 }
 
+// Function for logistical functional test.
 void logisticalFuncionalTest(){
     cout << "TESTE 5 - modelo simples com equacao logistica" << endl;
     
@@ -49,6 +51,7 @@ void logisticalFuncionalTest(){
     cout << "OK" << endl;
 }
 
+// Function for complex functional test.
 void complexFuncionalTest(){
     cout << "TESTE 6 - modelo complexo" << endl;
     

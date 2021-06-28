@@ -9,6 +9,7 @@
 
 using namespace std;
 
+// Function for exponential unit test.
 void exponentialUnitTest(){
     cout << "TESTE 1 - modelo simples com equacao exponencial" << endl;
     
@@ -45,6 +46,7 @@ void exponentialUnitTest(){
     cout << "OK" << endl;
 }
 
+// Function for logistical unit test.
 void logisticalUnitTest(){
     cout << "TESTE 2 - modelo simples com equacao logistica" << endl;
     
@@ -81,6 +83,7 @@ void logisticalUnitTest(){
     cout << "OK" << endl;
 }
 
+// Function for complex unit test.
 void complexUnitTest(){
     cout << "TESTE 3 - modelo complexo" << endl;
     
