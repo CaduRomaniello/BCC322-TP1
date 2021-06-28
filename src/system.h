@@ -5,6 +5,11 @@
 
 using namespace std;
 
+//! Class System
+/**
+* This class represents a system in the General Systems Theory implemented in this code.
+*/
+
 /**
  * Class System - Campos
  * name  -> string

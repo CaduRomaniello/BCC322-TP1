@@ -8,6 +8,11 @@
 
 using namespace std;
 
+//! Class Model
+/**
+* This class represents a model in the General Systems Theory implemented in this code.
+*/
+
 /**
  * Class Model - Campos
  * time -> double
