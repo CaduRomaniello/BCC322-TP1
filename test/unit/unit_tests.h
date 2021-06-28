@@ -42,11 +42,7 @@ class ExponencialFlow : public Flow{
         ExponencialFlow(string name, System* source, System* target): Flow(name, source, target){}
         
         /*!
-            A pure virtual method that will be inherited by subclasses created by the user, and contains
-            an equation that will be executed by the model.
-            \param
-            \param
-            \param
+            A method created by the user, that contains an equation that will be executed by the exponencial model.                        
         */
         virtual double execute(){
             return (0.01 * getSource()->getValue());
@@ -66,7 +62,10 @@ class LogisticFlow : public Flow{
             \param target a pointer to the target system of the LogisticFlow Class.
         */
         LogisticFlow(string name, System* source, System* target): Flow(name, source, target){}
-
+        
+        /*!
+            A method created by the user, that contains an equation that will be executed by the logistic model.                        
+        */
         virtual double execute(){
             return 0.01 * getTarget()->getValue() * (1 - getTarget()->getValue() / 70);
         }
@@ -85,7 +84,10 @@ class ComplexFlowF : public Flow{
             \param target a pointer to the target system of the ComplexFlowF Class.
         */
         ComplexFlowF(string name, System* source, System* target): Flow(name, source, target){}
-
+        
+        /*!
+            A method created by the user, that contains an equation that will be executed by the complex model.                        
+        */
         virtual double execute(){
             return 0.01 * getSource()->getValue();
         }
@@ -105,6 +107,9 @@ class ComplexFlowT : public Flow{
         */
         ComplexFlowT(string name, System* source, System* target): Flow(name, source, target){}
         
+        /*!
+            A method created by the user, that contains an equation that will be executed by the complex model.                        
+        */
         virtual double execute(){
             return 0.01 * getSource()->getValue();
         }
@@ -123,7 +128,10 @@ class ComplexFlowU : public Flow{
             \param target a pointer to the target system of the ComplexFlowU Class.
         */
         ComplexFlowU(string name, System* source, System* target): Flow(name, source, target){}
-
+        
+        /*!
+            A method created by the user, that contains an equation that will be executed by the complex model.                        
+        */
         virtual double execute(){
             return 0.01 * getSource()->getValue();
         }
@@ -142,7 +150,10 @@ class ComplexFlowV : public Flow{
             \param target a pointer to the target system of the ComplexFlowV Class.
         */
         ComplexFlowV(string name, System* source, System* target): Flow(name, source, target){}
-
+        
+        /*!
+            A method created by the user, that contains an equation that will be executed by the complex model.                        
+        */
         virtual double execute(){
             return 0.01 * getSource()->getValue();
         }
@@ -162,6 +173,9 @@ class ComplexFlowG : public Flow{
         */
         ComplexFlowG(string name, System* source, System* target): Flow(name, source, target){}
         
+        /*!
+            A method created by the user, that contains an equation that will be executed by the complex model.                        
+        */
         virtual double execute(){
             return 0.01 * getSource()->getValue();
         }
@@ -181,6 +195,9 @@ class ComplexFlowR: public Flow{
         */
         ComplexFlowR(string name, System* source, System* target): Flow(name, source, target){}
 
+        /*!
+            A method created by the user, that contains an equation that will be executed by the complex model.                        
+        */
         virtual double execute(){
             return 0.01 * getSource()->getValue();
         }

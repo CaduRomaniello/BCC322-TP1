@@ -9,19 +9,19 @@ using namespace std;
 
 void exponentialFuncionalTest(){
     cout << "TESTE 4 - modelo simples com equacao exponencial" << endl;
-    
-    //Cria elementos do modelo
+
+    //Creates elements of the model
     System* pop1 = new System("Populacao 1", 100);
     System* pop2 = new System("Populacao 2", 0);
     ExponencialFlow* expFlow = new ExponencialFlow("Crescimento ilimitado", pop1, pop2);
     Model* expModel = new Model("Modelo Exponencial", 0.0);
     
-    //Monta modelo
+    //Building the model
     expModel->add(pop1);
     expModel->add(pop2);
     expModel->add(expFlow);
 
-    //Simula o modelo
+    //Executes the model
     expModel->execute(0, 100, 1);
 
     delete (expModel);
@@ -31,18 +31,18 @@ void exponentialFuncionalTest(){
 void logisticalFuncionalTest(){
     cout << "TESTE 5 - modelo simples com equacao logistica" << endl;
     
-    //Cria elementos do modelo
+    //Creates elements of the model
     System* p1 = new System("Populacao 1", 100);
     System* p2 = new System("Populacao 2", 10);
     LogisticFlow* logFlow = new LogisticFlow("Crescimento limitado", p1, p2);
     Model* logModel = new Model("Modelo Logistico", 0.0);
     
-    //Monta modelo
+    //Building the model
     logModel->add(p1);
     logModel->add(p2);
     logModel->add(logFlow);
 
-    //Simula o modelo
+    //Executes the model
     logModel->execute(0, 100, 1);
 
     delete(logModel);
@@ -52,7 +52,7 @@ void logisticalFuncionalTest(){
 void complexFuncionalTest(){
     cout << "TESTE 6 - modelo complexo" << endl;
     
-    //Cria elementos do modelo
+    //Creates elements of the model
     System* q1 = new System("Q1", 100);
     System* q2 = new System("Q2", 0);
     System* q3 = new System("Q3", 100);
@@ -66,7 +66,7 @@ void complexFuncionalTest(){
     ComplexFlowR* comFlowR = new ComplexFlowR("Fluxo r", q2, q5);
     Model* comModel = new Model("Modelo Complexo", 0.0);
     
-    //Monta modelo
+    //Building the model
     comModel->add(q1);
     comModel->add(q2);
     comModel->add(q3);
@@ -79,7 +79,7 @@ void complexFuncionalTest(){
     comModel->add(comFlowG);
     comModel->add(comFlowR);
 
-    //Simula o modelo
+    //Executes the model
     comModel->execute(0, 100, 1);
 
     delete(comModel);

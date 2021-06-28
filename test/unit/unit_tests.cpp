@@ -12,18 +12,18 @@ using namespace std;
 void exponentialUnitTest(){
     cout << "TESTE 1 - modelo simples com equacao exponencial" << endl;
     
-    //Cria elementos do modelo
+    //Creates elements of the model
     System* pop1 = new System("Populacao 1", 100.0);
     System* pop2 = new System("Populacao 2", 0.0);
     ExponencialFlow* expFlow = new ExponencialFlow("Crescimento ilimitado", pop1, pop2);
     Model* expModel = new Model("Modelo Exponencial", 0.0);
     
-    //Monta modelo
+    //Building the model
     expModel->add(pop1);
     expModel->add(pop2);
     expModel->add(expFlow);
 
-    //Realiza asserções do teste unitário antes da execução
+    //Making assertions for the unit test before execution
     assert(pop1->getName() == "Populacao 1");
     assert(pop2->getName() == "Populacao 2");
     assert(expFlow->getName() == "Crescimento ilimitado");
@@ -33,10 +33,10 @@ void exponentialUnitTest(){
     assert(abs(pop2->getValue() - 0.0) < 0.0001);
     assert(abs(expModel->getTime() - 0.0) < 0.0001);
 
-    //Simula o modelo
+    //Executes the model
     expModel->execute(0, 100, 1);
 
-    //Realiza asserções do teste unitário após a execução
+    //Making assertions for the unit test after execution
     assert(abs(pop1->getValue() - 36.6032) < 0.0001);
     assert(abs(pop2->getValue() - 63.3968) < 0.0001);
     assert(abs(expModel->getTime() - 100.0) < 0.0001);
@@ -48,18 +48,18 @@ void exponentialUnitTest(){
 void logisticalUnitTest(){
     cout << "TESTE 2 - modelo simples com equacao logistica" << endl;
     
-    //Cria elementos do modelo
+    //Creates elements of the model
     System* p1 = new System("Populacao 1", 100);
     System* p2 = new System("Populacao 2", 10);
     LogisticFlow* logFlow = new LogisticFlow("Crescimento limitado", p1, p2);
     Model* logModel = new Model("Modelo Logistico", 0.0);
     
-    //Monta modelo
+    //Building the model
     logModel->add(p1);
     logModel->add(p2);
     logModel->add(logFlow);
 
-    //Realiza asserções do teste unitário antes da execução
+    //Making assertions for the unit test before execution
     assert(p1->getName() == "Populacao 1");
     assert(p2->getName() == "Populacao 2");    
     assert(logFlow->getName() == "Crescimento limitado");
@@ -69,10 +69,10 @@ void logisticalUnitTest(){
     assert(abs(p2->getValue() - 10.0) < 0.0001);
     assert(abs(logModel->getTime() - 0.0) < 0.0001);    
 
-    //Simula o modelo
+    //Executes the model
     logModel->execute(0, 100, 1);
 
-    //Realiza asserções do teste unitário após a execução
+    //Making assertions for the unit test after execution
     assert(abs(p1->getValue() - 88.2167) < 0.0001);
     assert(abs(p2->getValue() - 21.7833) < 0.0001);
     assert(abs(logModel->getTime() - 100.0) < 0.0001); 
@@ -84,7 +84,7 @@ void logisticalUnitTest(){
 void complexUnitTest(){
     cout << "TESTE 3 - modelo complexo" << endl;
     
-    //Cria elementos do modelo
+    //Creates elements of the model
     System* q1 = new System("Q1", 100);
     System* q2 = new System("Q2", 0);
     System* q3 = new System("Q3", 100);
@@ -98,7 +98,7 @@ void complexUnitTest(){
     ComplexFlowR* comFlowR = new ComplexFlowR("Fluxo r", q2, q5);
     Model* comModel = new Model("Modelo Complexo", 0.0);
     
-    //Monta modelo
+    //Building the model
     comModel->add(q1);
     comModel->add(q2);
     comModel->add(q3);
@@ -111,7 +111,7 @@ void complexUnitTest(){
     comModel->add(comFlowG);
     comModel->add(comFlowR);
 
-    //Realiza asserções do teste unitário antes da execução
+    //Making assertions for the unit test before execution
     assert(q1->getName() == "Q1");
     assert(q2->getName() == "Q2");
     assert(q3->getName() == "Q3");
@@ -132,10 +132,10 @@ void complexUnitTest(){
     assert(abs(q5->getValue() - 0.0) < 0.0001);
     assert(abs(comModel->getTime() - 0.0) < 0.0001);
 
-    //Simula o modelo
+    //Executes the model
     comModel->execute(0, 100, 1);
 
-    //Realiza asserções do teste unitário após a execução
+    //Making assertions for the unit test after execution
     assert(abs(q1->getValue() - 31.8513) < 0.0001);
     assert(abs(q2->getValue() - 18.4003) < 0.0001);
     assert(abs(q3->getValue() - 77.1143) < 0.0001);
