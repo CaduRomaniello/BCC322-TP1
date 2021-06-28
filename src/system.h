@@ -7,39 +7,61 @@ using namespace std;
 
 //! Class System
 /**
-* This class represents a system in the General Systems Theory implemented in this code.
-*/
-
-/**
- * Class System - Campos
- * name  -> string
- * value -> double
+* This Class represents a system in the General Systems Theory implemented in this code.
 */
 
 class System{
 
     protected:
-        string name;
-        double value;
+        string name; /*!< This variable contains a name for the system. */
+        double value; /*!< This variable contains the atual value of the system. */
 
     public:
 
-        // Construtores e Destrutores
+        /*!
+            This is the default constructor for the System Class.
+        */
         System(){}
+
+        /*!
+            This is a more elaborated constructor for the System Class.
+            \param name the name of the System Class.
+            \param value the initial value of the system.
+            \return System - a System Class object.
+        */
         System(string name="", double value=0.0):name(name), value(value){}
+
+        /*!
+            This is the default destructor for the System Class.
+        */
         virtual ~System(){}
 
-        // Setters e Getters
+        /*!
+            Sets the atributte name in the System Class.
+            \param sysName which will be set to the current system.
+        */
         void setName(string sysName){
             name = sysName;
         }
+        /*!
+            Returns the name attribute in the System Class.
+            \return String - the content name attribute.  
+        */
         string getName() const {
             return name;
         }    
         
+        /*!
+            Sets the atributte value in the System Class.
+            \param sysValue which will be set to the current system.
+        */
         void setValue(double sysValue){
             value = sysValue;
         }
+        /*!
+            Returns the value attribute in the System Class.
+            \return double - the content value attribute.  
+        */
         double getValue() const{
             return value;
         }  
@@ -47,7 +69,10 @@ class System{
         
     private:    
 
-        //Construtor de cópia
+        /*!
+            This is the copy constructor for the System Class.
+            \param sys the system that is going to be cloned.
+        */
         System (const System& sys){
             if (this == &sys){
                 return;
@@ -57,7 +82,9 @@ class System{
             value = sys.value;
         }
 
-        //Sobrecarga do operador de atribuição
+        /*!
+            This is the overloaded equal operator for the System Class.
+        */
         System& operator=(const System& sys){
             if (this == &sys){
                 return *this;

@@ -8,7 +8,7 @@ using namespace std;
 
 //! Class flow
 /**
-* This class represents a flow in the General Systems Theory implemented in this code.
+* This Class represents a flow in the General Systems Theory implemented in this code.
 */
 class Flow{
 
@@ -28,7 +28,7 @@ class Flow{
             \param name the name of the Flow Class.
             \param source a pointer to the source system of the Flow Class.
             \param target a pointer to the target system of the Flow Class.
-            \return a Flow class object.
+            \return Flow - a Flow Class object.
         */
         Flow(string name="", System* source = NULL, System* target = NULL):name(name), source(source), target(target){}
         
@@ -38,13 +38,13 @@ class Flow{
         virtual ~Flow(){}
 
         /*!
-            A pure virtual method that will be inherited by subclasses created by the user, and that will contain
+            A pure virtual method that will be inherited by subClasses created by the user, and that will contain
             an equation that will be executed by the model.
         */
         virtual double execute() = 0;
 
         /*!
-            This is the getter for the attribute name in the Flow Class.
+            Returns the name attribute in the Flow Class.
             \return String - the content name attribute.  
         */
         string getName() const{
@@ -52,7 +52,7 @@ class Flow{
         }
                 
         /*!
-            Sets the atributte name in the Flow Class.
+            Sets the name atributte in the Flow Class.
             \param flowName which will be set to the current flow.
         */
         void setName(string flowName){
@@ -60,7 +60,7 @@ class Flow{
         }
 
         /*!
-            This is the getter for the source atributte in the Flow Class.  
+            Returns the source atributte in the Flow Class.  
             \return System* - the pointer of the source system. 
         */
         System* getSource() const{
@@ -68,7 +68,7 @@ class Flow{
         }
 
         /*!
-            This is the setter for the source atributte in the Flow Class. 
+            Sets the source atributte in the Flow Class. 
             \param sourceSys a pointer to the source target.
         */
         void setSource(System* sourceSys){
@@ -83,7 +83,7 @@ class Flow{
         }
 
         /*!
-            This is the getter for the target atributte in the Flow Class. 
+            Returns the target atributte in the Flow Class. 
             \return System* - the pointer of the target system. 
         */
         System* getTarget() const{
