@@ -12,14 +12,13 @@ using namespace std;
 /**
 * This Class represents a model in the General Systems Theory implemented in this code.
 */
-
 class Model{
 
     protected:
-        string name; /*!< This variable contains a name for the model. */
-        double time; /*!< This variable contains the current time in which the operations in the model is being executed. */
-        vector<System*> systems; /*!< This variable stores pointers to the systems contained in the model. */
-        vector<Flow*> flows; /*!< This variable stores pointers to the flows contained in the model. */
+        string name; /*!< This attribute contains a name for the model. */
+        double time; /*!< This attribute contains the current time in which the operations in the model is being executed. */
+        vector<System*> systems; /*!< This attribute stores pointers to the systems contained in the model. */
+        vector<Flow*> flows; /*!< This attribute stores pointers to the flows contained in the model. */
 
     public:
     
@@ -30,9 +29,9 @@ class Model{
         
         /*!
             This is a more elaborated constructor for the Model Class.
-            \param name the name of the Model Class
-            \param time the time for the Model Class to run
-            \return Model - a Model Class object
+            \param name the name of the Model Class.
+            \param time the time for the Model Class to run.
+            \return Model - a Model Class object.
         */
         Model(string name="", double time=0.0):name(name), time(time){}
         
@@ -58,7 +57,7 @@ class Model{
         }
 
         /*!
-            This method executes all the flows in the model.
+            Executes all the flows in the model.
             \param start the initial time.
             \param final the final time.
             \param increment represents the iteration step.
@@ -92,24 +91,24 @@ class Model{
         }
         
         /*!        
-           A method to add a system's pointer to the systems vector. 
-           \param sys the system to be added 
+           Adds a system's pointer to the systems vector. 
+           \param sys the system to be added.
         */ 
         void add(System* sys){
             systems.push_back(sys);
         }
         
         /*!        
-           A method to add a flow's pointer to the flows vector. 
-           \param flow the flow to be added 
+           Adds a flow's pointer to the flows vector. 
+           \param flow the flow to be added.
         */ 
         void add(Flow* flow){
             flows.push_back(flow);
         }
         
         /*!        
-           A method to remove a system's pointer on the systems vector.
-           \param sys which will be removed from the vector flows  
+           Removes a system's pointer on the systems vector.
+           \param sys which will be removed from the vector flows.  
         */ 
         void remove(System* sys){
 
@@ -124,8 +123,8 @@ class Model{
         }
         
         /*!        
-           A method to remove a flow's pointer on the flows vector.
-           \param flow which will be removed from the vector flows 
+           Removes a flow's pointer on the flows vector.
+           \param flow which will be removed from the vector flows. 
         */ 
         void remove(Flow* flow){
 
@@ -140,7 +139,7 @@ class Model{
         }
 
         /*!
-            Sets the name atributte in the Model Class.
+            Sets the name attribute in the Model Class.
             \param modelName which will be set to the current model.
         */
         void setName(string modelName){
@@ -148,15 +147,15 @@ class Model{
         }
 
         /*!
-            Returns the name atributte in the Model Class. 
-            \return String - the name attribute.
+            Returns the name attribute in the Model Class.
+            \return string - the name attribute.
         */
         string getName() const{
             return name;
         }    
 
         /*!
-            Sets the time atributte in the Model Class.
+            Sets the time attribute in the Model Class.
             \param currentTime which will be set to the current model.
         */
         void setTime(double currentTime){
@@ -164,16 +163,16 @@ class Model{
         }
 
         /*!
-            Returns the time atributte in the Model Class. 
-            \return Double - the time attribute.
+            Returns the time attribute in the Model Class.
+            \return double - the time attribute.
         */
         double getTime() const{
             return time;
         }    
 
         /*!
-            This method increments the time atributte in the Model Class
-            \param increment which will define by how much time should increment
+            This method increments the time attribute in the Model Class.
+            \param increment which will define by how much time should increment.
         */
         void incrementTime(double increment) {
             time += increment;

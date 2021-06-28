@@ -9,12 +9,11 @@ using namespace std;
 /**
 * This Class represents a system in the General Systems Theory implemented in this code.
 */
-
 class System{
 
     protected:
-        string name; /*!< This variable contains a name for the system. */
-        double value; /*!< This variable contains the atual value of the system. */
+        string name; /*!< This attribute contains a name for the system. */
+        double value; /*!< This attribute contains the actual value of the system. */
 
     public:
 
@@ -37,22 +36,23 @@ class System{
         virtual ~System(){}
 
         /*!
-            Sets the atributte name in the System Class.
+            Sets the name attribute in the System Class.
             \param sysName which will be set to the current system.
         */
         void setName(string sysName){
             name = sysName;
         }
+
         /*!
             Returns the name attribute in the System Class.
-            \return String - the content name attribute.  
+            \return string - the content name attribute.  
         */
         string getName() const {
             return name;
         }    
         
         /*!
-            Sets the atributte value in the System Class.
+            Sets the value attribute in the System Class.
             \param sysValue which will be set to the current system.
         */
         void setValue(double sysValue){
@@ -64,8 +64,7 @@ class System{
         */
         double getValue() const{
             return value;
-        }  
-
+        }
         
     private:    
 
