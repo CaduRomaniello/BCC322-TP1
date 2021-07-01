@@ -16,10 +16,10 @@ class Flow{
         string name; /*!< This attribute contains a name for the flow. */
         System* source; /*!< This attribute stores a pointer to the source system of a flow. */
         System* target; /*!< This attribute stores a pointer to the target system of a flow. */
-        bool isAddedToModel; /*! < This attribute is True if the Flow is added to a Model, and it is False otherwise.*/
+        bool isAddedToModel; /*!< This attribute is True if the Flow is added to a Model, and it is False otherwise. */
 
     public:
-        friend class Model;
+        friend class Model; /*!< This Class represents a model in the General Systems Theory implemented in this code. */
 
         /*!
             This is the default constructor for the Flow Class.
