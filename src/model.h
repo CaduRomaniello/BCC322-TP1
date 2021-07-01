@@ -3,6 +3,8 @@
 
 #include <vector>
 #include <iostream>
+#include <algorithm>
+#include <map>
 #include "./system.h"
 #include "./flow.h"
 
@@ -18,10 +20,14 @@ class Model{
         string name; /*!< This attribute contains a name for the model. */
         double time; /*!< This attribute contains the current time in which the operations in the model is being executed. */
         vector<System*> systems; /*!< This attribute stores pointers to the systems contained in the model. */
-        vector<Flow*> flows; /*!< This attribute stores pointers to the flows contained in the model. */
+        vector<Flow*> flows; /*!< This attribute stores pointers to the flows contained in the model. */       
 
     public:
-    
+        auto beginSystems( void ) const {return systems.begin();} /*!< Returns the iterator to the beginning of systems attribute. */
+        auto endSystems( void ) const {return systems.end();} /*!< Returns the iterator to the end of systems attribute. */
+        auto beginFlows( void ) const {return flows.begin();} /*!< Returns the iterator to the beginning of flows attribute. */
+        auto endFlows( void ) const {return flows.end();} /*!< Returns the iterator to the end of flows attribute. */
+                        
         /*!
             This is the default constructor for the Model Class.
         */
@@ -38,24 +44,18 @@ class Model{
         /*!
             This is the default destructor for the Model Class.
         */
-        virtual ~Model(){
-            
+        virtual ~Model(){           
             // Deletes Systems
-            int count = 0;
-            for (auto i = systems.begin(); i != systems.end(); ++i){
-                delete (systems[count]);
-                count++;
+            for (System* item : systems) {
+                delete (item);
             }
-            
+
             // Deletes Flows
-            count = 0;
-            for (auto i = flows.begin(); i != flows.end(); ++i){
-                delete (flows[count]);
-                count++;
+            for (Flow* item : flows) {
+                delete (item);
             }
-
         }
-
+            
         /*!
             Executes all the flows in the model.
             \param start the initial time.
@@ -65,37 +65,44 @@ class Model{
         void execute(double start=0.0, double final=0.0, double increment=1.0){
             
             vector<double> results;
+            int count = 0;
 
             for (double k = start; k < final; k += increment){
                 // Executes each flow 'i' in the model
-                for (int i = 0; i < (int) flows.size(); i++){
-                    double result = flows[i]->execute();
+                for (Flow* item : flows) {
+                    double result = item->execute();
                     results.push_back(result);
                 }
 
                 // Updates the system's values associated with each flow 'i' in the model
-                for (int i = 0; i < (int) flows.size(); i++){
-                    System* origin = flows[i]->getSource();
-                    origin->setValue(origin->getValue() - results[i]);
+                count = 0;
+                for (Flow* item : flows) {
+                    System* origin = item->getSource();
+                    origin->setValue(origin->getValue() - results[count]);
 
-                    System* destiny = flows[i]->getTarget();
-                    destiny->setValue(destiny->getValue() + results[i]);
+                    System* destiny = item->getTarget();
+                    destiny->setValue(destiny->getValue() + results[count]);
+
+                    count++;
                 }
 
-                for (int i = 0; i < (int) flows.size(); i++){
+                // Resetting the results vector
+                for (auto i = beginFlows(); i != endFlows(); ++i){
                     results.pop_back();
                 }
+
                 time += increment;
             }
 
         }
         
         /*!        
-           Adds a system's pointer to the systems vector. 
+           Adds a system's pointer to the systems vector.
            \param sys the system to be added.
         */ 
         void add(System* sys){
-            systems.push_back(sys);
+            systems.insert(endSystems(), sys);
+            sys->setIsAddedToModel(true);
         }
         
         /*!        
@@ -103,7 +110,8 @@ class Model{
            \param flow the flow to be added.
         */ 
         void add(Flow* flow){
-            flows.push_back(flow);
+            flows.insert(endFlows(), flow);            
+            flow->setIsAddedToModel(true);
         }
         
         /*!        
@@ -112,28 +120,32 @@ class Model{
         */ 
         void remove(System* sys){
 
-            int count = 0;
-            for (auto i = systems.begin(); i < systems.end(); ++i){
-                if (sys == systems[count]){
+            auto i = beginSystems();
+            for (System* item : systems){
+                if (sys == item){
                     systems.erase(i);
+                    item->setIsAddedToModel(false);
+                    break;
                 }
-                count++;
+                ++i;
             }
 
         }
-        
-        /*!        
+      
+        /*!
            Removes a flow's pointer on the flows vector.
            \param flow which will be removed from the vector flows. 
-        */ 
+        */
         void remove(Flow* flow){
 
-            int count = 0;
-            for (auto i = flows.begin(); i < flows.end(); ++i){
-                if (flow == flows[count]){
+            auto i = beginFlows();
+            for (Flow* item : flows){
+                if (flow == item){
                     flows.erase(i);
+                    item->setIsAddedToModel(false);
+                    break;
                 }
-                count++;
+                ++i;
             }
 
         }
@@ -179,36 +191,53 @@ class Model{
         }
 
     private: 
-
         /*!        
            This is the copy constructor for the Model Class.
            \param model the model that is going to be cloned.
            \param systemsVector the vector of system pointers, it prevents memory leak.
            \param flowsVector the vector of flow pointers, it prevents memory leak.      
         */ 
-        Model (const Model& model, vector<System*> systemsVector, vector<Flow*> flowsVector){
+        Model (const Model& model){
             if (this == &model){
                 return;
             }
-    
-            systems = systemsVector;
-            flows = flowsVector;
-            name  = model.name;
-            time  = model.time;
+
+            name = model.getName();
+            time = model.getTime();   
+            
+            for (System* item : systems){
+                System* copy(item);
+                systems.insert(endSystems(), copy);
+            }         
+
+            for (Flow* item : flows){
+                Flow* copy(item);
+                flows.insert(endFlows(), copy);
+            }
+           
         }
         
         /*!
-            This is the overloaded equal operator for the Model Class.
+            This is the overloaded assignment operator for the Model Class.
         */
         Model& operator=(const Model& model){
             if (this == &model){
                 return *this;
             }
 
-            name = model.name;
-            time = model.time;
-            systems = model.systems;
-            flows = model.flows;
+            name = model.getName();
+            time = model.getTime();
+
+
+            for (System* item : systems){
+                System* copy(item);
+                systems.insert(endSystems(), copy);
+            }
+
+            for (Flow* item : flows){
+                Flow* copy(item);
+                flows.insert(endFlows(), copy);
+            }
 
             return *this;
         }

@@ -19,12 +19,12 @@ void exponentialUnitTest(){
     ExponencialFlow* expFlow = new ExponencialFlow("Crescimento ilimitado", pop1, pop2);
     Model* expModel = new Model("Modelo Exponencial", 0.0);
     
-    //Building the model
+    // Building the model
     expModel->add(pop1);
     expModel->add(pop2);
     expModel->add(expFlow);
 
-    //Making assertions for the unit test before execution
+    // Making assertions for the unit test before execution
     assert(pop1->getName() == "Populacao 1");
     assert(pop2->getName() == "Populacao 2");
     assert(expFlow->getName() == "Crescimento ilimitado");
@@ -34,10 +34,10 @@ void exponentialUnitTest(){
     assert(abs(pop2->getValue() - 0.0) < 0.0001);
     assert(abs(expModel->getTime() - 0.0) < 0.0001);
 
-    //Executes the model
+    // Executes the model
     expModel->execute(0, 100, 1);
 
-    //Making assertions for the unit test after execution
+    // //Making assertions for the unit test after execution
     assert(abs(pop1->getValue() - 36.6032) < 0.0001);
     assert(abs(pop2->getValue() - 63.3968) < 0.0001);
     assert(abs(expModel->getTime() - 100.0) < 0.0001);
