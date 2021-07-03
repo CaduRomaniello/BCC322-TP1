@@ -27,14 +27,9 @@ class Model{
         auto endSystems( void ) const {return systems.end();} /*!< Returns the iterator to the end of systems attribute. */
         auto beginFlows( void ) const {return flows.begin();} /*!< Returns the iterator to the beginning of flows attribute. */
         auto endFlows( void ) const {return flows.end();} /*!< Returns the iterator to the end of flows attribute. */
-                        
-        /*!
-            This is the default constructor for the Model Class.
-        */
-        Model(){}
         
         /*!
-            This is a more elaborated constructor for the Model Class.
+            This is the default constructor for the Model Class. 
             \param name the name of the Model Class.
             \param time the time for the Model Class to run.
             \return Model - a Model Class object.
@@ -190,7 +185,6 @@ class Model{
             time += increment;
         }
 
-    private: 
         /*!        
            This is the copy constructor for the Model Class.
            \param model the model that is going to be cloned.

@@ -20,14 +20,9 @@ class Flow{
 
     public:
         friend class Model; /*!< This Class represents a model in the General Systems Theory implemented in this code. */
-
-        /*!
-            This is the default constructor for the Flow Class.
-        */
-        Flow():isAddedToModel(false){}
         
         /*!
-            This is a more elaborated constructor for the Flow Class.
+            This is the default constructor for the Flow Class.
             \param name the name of the Flow.
             \param source a pointer to the source system of the Flow.
             \param target a pointer to the target system of the Flow.
@@ -43,10 +38,10 @@ class Flow{
              * Verifying if the flow is a copy, if true it's instances for source and target should be deleted
              * to avoid memory leak.
              */
-            if (!(source->getIsAddedToModel())){
+            if (getSource() != NULL && !(getSource()->getIsAddedToModel())){
                 delete(source);
             }
-            if (!(target->getIsAddedToModel())){
+            if (getTarget() != NULL && !(getTarget()->getIsAddedToModel())){
                 delete(target);
             }
         }
@@ -119,23 +114,6 @@ class Flow{
             target = NULL;
         }
 
-    private:
-        /*!
-            Returns the isAddedToModel attribute in the Flow Class. 
-            \return bool - the content of isAddedToModel attribute.
-        */
-        bool getIsAddedToModel() const{
-            return isAddedToModel;
-        }
-        
-        /*!
-            Sets the isAddedToModel attribute in the Flow Class.   
-            \param flowInModel which will be set to the current flow.
-        */
-        void setIsAddedToModel(bool flowInModel) {
-            isAddedToModel = flowInModel;
-        }
-
         /*!
             This is the copy constructor for the Flow Class.
             \param flow the flow that is going to be cloned.
@@ -153,8 +131,13 @@ class Flow{
                 delete (getTarget());
             }
             
-            System* sourceCopy = new System(flow.getSource()->getName(), flow.getSource()->getValue());
-            System* targetCopy = new System(flow.getTarget()->getName(), flow.getTarget()->getValue());
+            System* sourceCopy = NULL;
+            if(flow.getSource() != NULL)
+                sourceCopy = new System(flow.getSource()->getName(), flow.getSource()->getValue());
+
+            System* targetCopy = NULL;
+            if(flow.getTarget() != NULL)
+                targetCopy = new System(flow.getTarget()->getName(), flow.getTarget()->getValue());
             
             name = flow.getName();           
             source = sourceCopy;
@@ -178,8 +161,13 @@ class Flow{
                 delete (getTarget());
             }
 
-            System* sourceCopy = new System(flow.getSource()->getName(), flow.getSource()->getValue());
-            System* targetCopy = new System(flow.getTarget()->getName(), flow.getTarget()->getValue());
+            System* sourceCopy = NULL;
+            if(flow.getSource() != NULL)
+                sourceCopy = new System(flow.getSource()->getName(), flow.getSource()->getValue());
+
+            System* targetCopy = NULL;
+            if(flow.getTarget() != NULL)
+                targetCopy = new System(flow.getTarget()->getName(), flow.getTarget()->getValue());
 
             name = flow.getName();
             source = sourceCopy;
@@ -187,6 +175,23 @@ class Flow{
             isAddedToModel = false;
 
             return *this;
+        }
+
+    private:
+        /*!
+            Returns the isAddedToModel attribute in the Flow Class. 
+            \return bool - the content of isAddedToModel attribute.
+        */
+        bool getIsAddedToModel() const{
+            return isAddedToModel;
+        }
+        
+        /*!
+            Sets the isAddedToModel attribute in the Flow Class.   
+            \param flowInModel which will be set to the current flow.
+        */
+        void setIsAddedToModel(bool flowInModel) {
+            isAddedToModel = flowInModel;
         }
 
 };
