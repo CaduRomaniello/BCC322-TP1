@@ -22,11 +22,6 @@ class System{
 
         /*!
             This is the default constructor for the System Class.
-        */
-        System():isAddedToModel(false){}
-
-        /*!
-            This is a more elaborated constructor for the System Class.
             \param name the name of the System.
             \param value the initial value of the System.
             \return System - a System Class object, with it's isAddedToModel attribute set to false.
@@ -68,23 +63,6 @@ class System{
         double getValue() const{
             return value;
         }
-        
-    private:
-        /*!
-            Sets the isAddedToModel attribute in the System Class.
-            \param sysInModel which will be set to the current system.
-        */
-        void setIsAddedToModel(bool sysInModel){
-            isAddedToModel = sysInModel;
-        }
-
-        /*!
-            Returns the isAddedToModel attribute in the System Class.
-            \return bool - the content of isAddedToModel attribute.
-        */
-        bool getIsAddedToModel() const{
-            return isAddedToModel;
-        }
 
         /*!
             This is the copy constructor for the System Class.
@@ -114,6 +92,24 @@ class System{
 
             return *this;
         }
+
+    private:
+        /*!
+            Sets the isAddedToModel attribute in the System Class.
+            \param sysInModel which will be set to the current system.
+        */
+        void setIsAddedToModel(bool sysInModel){
+            isAddedToModel = sysInModel;
+        }
+
+        /*!
+            Returns the isAddedToModel attribute in the System Class.
+            \return bool - the content of isAddedToModel attribute.
+        */
+        bool getIsAddedToModel() const{
+            return isAddedToModel;
+        }
+
 
 };
 
