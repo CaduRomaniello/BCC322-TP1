@@ -4,6 +4,9 @@
 #include "../../src/system.h"
 #include "../../src/flow.h"
 
+#define RESET "\033[0m"  /* Escape sequence to reset color output to default. */
+#define GREEN "\033[32m" /* Escape sequence to a green color output. */
+
 //! Functional tests
 /**
 * Implementation of the functional tests for the Flow, System and Model classes.

@@ -2,106 +2,193 @@
 
 using namespace std;
 
+// Function for System class's constructor unit test.
 void unit_system_constructor(){
     cout << "TEST 1 - Default constructor of the System class without passing parameters" << endl;
     
     System* system1 = new System();
-    assert(system1->getName() == ""); 
+    // Making assertion to verify if the name property was initialized with the default data.
+    assert(system1->getName() == "");
+    // Making assertion to verify if the value property was initialized with the default data. 
     assert(system1->getValue() == 0.0);
 
     cout << GREEN << "OK!" << RESET << endl;
 
-    cout << "TEST 2 - Default constructor of the Flow class with passing parameters" << endl; 
+    cout << "TEST 2 - Default constructor of the System class with passing parameters" << endl; 
     
-    System* system2 = new System("Sistema de teste", 10.0);
-    assert(system2->getName() == "Sistema de teste"); 
+    System* system2 = new System("Test System", 10.0);
+    // Making assertion to verify if the name property was initialized with the parameter specified.
+    assert(system2->getName() == "Test System");
+    // Making assertion to verify if the value property was initialized with the parameter specified. 
     assert(system2->getValue() == 10.0);
 
     cout << GREEN << "OK!"<< RESET << endl;
 }
 
+// Function for System class's copy constructor unit test.
 void unit_system_copy_constructor(){
     cout << "TEST 3 - Copy constructor of the System class" << endl;
     
-    System* system1 = new System("Sistema de teste", 10.0);
+    System* system1 = new System("Test System", 10.0);
     System* system2 = new System(*system1);
-    assert(system2->getName() == "Sistema de teste");
-    assert(system2->getValue() == 10.0);
 
+    // Making assertion to verify if the name property was copied.
+    assert(system2->getName() == "Test System");
+    // Making assertion to verify if the value property was copied.
+    assert(system2->getValue() == 10.0);
+    // Making assertion to verify if the System objects aren't pointing to the same memory.
     assert(system1 != system2);
 
     cout << GREEN << "OK!" << RESET << endl;
 }
 
+// Function for the System class' destructor unit test.
 void unit_system_destructor(){
     cout << "TEST 4 - Default destructor of the System class" << endl;
-
+    
     double vmBefore, vmAfter, rss;
+
+    // Getting the memory usage previous to the creation of a system.
     memory_usage(vmBefore, rss);
-  
-    System* system = new System("Sistema de teste", 10.0);
+    
+    System* system = new System("Test System", 10.0);
     delete system;
 
+    // Getting the memory usage after the creation and destruction of a System object.
     memory_usage(vmAfter, rss);
+
+    // Making assertion to verify if the memory usage after the creation and deletion
+    // is the same as before the creation of System object.
     assert(vmBefore == vmAfter);
 
     cout << GREEN << "OK!" << RESET << endl;
 }
 
+// Function for System class' method getName() unit test.
 void unit_system_getName(){
     cout << "TEST 5 - System class's getName() method" << endl;
     
-    System* system = new System("Sistema de teste", 10.0);
-    assert(system->getName() == "Sistema de teste");
+    System* system = new System("Test System", 10.0);
+
+    // Making assertion to verify if the method returns the System class name and if it's
+    // equal to the parameter previously passed. 
+    assert(system->getName() == "Test System");
 
     cout << GREEN << "OK!" << RESET << endl;
 }
 
+// Function for System class' method setName() unit test.
 void unit_system_setName(){
     cout << "TEST 6 - System class's setName() method" << endl;
     
-    System* system = new System("Sistema de teste", 10.0);
-    system->setName("Nome alterado");
-    assert(system->getName() == "Nome alterado");
+    System* system = new System("Test System", 10.0);
+    system->setName("Altered Name");
+
+    // Making assertion to verify if the data of the name property has been altered.
+    assert(system->getName() == "Altered Name");
 
     cout << GREEN << "OK!" << RESET << endl;
 }
 
+// Function for System class' method getValue() unit test.
 void unit_system_getValue(){
     cout << "TEST 7 - System class's getValue() method" << endl;
-    
-    System* system = new System("Sistema de teste", 10.0);
+
+    System* system = new System("Test System", 10.0);
+
+    // Making assertion to verify if the method returns the System class value and if it's
+    // equal to the parameter previously passed.
     assert(system->getValue() == 10.0);
 
     cout << GREEN << "OK!" << RESET << endl;
 }
 
+// Function for System class' method setValue() unit test.
 void unit_system_setValue(){
     cout << "TEST 8 - System class's setValue() method" << endl;
-    
-    System* system = new System("Sistema de teste", 10.0);;
+
+    System* system = new System("Test System", 10.0);
     system->setValue(20.0);
+    
+    // Making assertion to verify if the data of the value property has been altered.
     assert(system->getValue() == 20.0);
 
     cout << GREEN << "OK!" << RESET << endl;
 }
 
+// Function for System class' assingment operator unit test.
 void unit_system_assingmentOperator(){
     cout << "TEST 9 - System class assignment operator" << endl;
     
-    System* system1 = new System("Sistema de teste", 10.0);
+    System* system1 = new System("Test System", 10.0);
     System* system2 = new System();
     *system2 = *system1;
 
-    assert(system2->getName() == "Sistema de teste");
+    // Making assertion to verify if the name property was assigned.
+    assert(system2->getName() == "Test System");
+    // Making assertion to verify if the value property was assigned.
     assert(system2->getValue() == 10.0);
-    
+    // Making assertion to verify if the System objects aren't pointing to the same memory
     assert(system1 != system2);
 
     cout << GREEN << "OK!" << RESET << endl;
 }
 
+// Function for System class' "+" operator unit test.
+void unit_system_sumOperator(){
+    System sys1("Population 1", 100.0);
+    System sys2("Population 2", 10.0);
+
+    cout << "TEST 10 - System class sum operator" << endl;
+    assert((sys1 + sys2) == 110);
+    assert((20.0 + sys2) == 30);
+    assert((sys1 + 20.0) == 120);
+
+    cout << GREEN << "OK!" << RESET << endl;
+}
+
+// Function for System class' "-" operator unit test.
+void unit_system_minusOperator(){
+    System sys1("Population 1", 100.0);
+    System sys2("Population 2", 10.0);
+
+    cout << "TEST 11 - System class subtraction operator" << endl;
+    assert((sys1 - sys2) == 90);
+    assert((20.0 - sys2) == 10);
+    assert((sys1 - 20.0) == 80);
+
+    cout << GREEN << "OK!" << RESET << endl;
+}
+
+// Function for System class' "*" operator unit test.
+void unit_system_timesOperator(){
+    System sys1("Population 1", 100.0);
+    System sys2("Population 2", 10.0);
+
+    cout << "TEST 12 - System class multiplication operator" << endl;
+    assert((sys1 * sys2) == 1000);
+    assert((20.0 * sys2) == 200);
+    assert((sys1 * 20.0) == 2000);
+
+    cout << GREEN << "OK!" << RESET << endl;
+}
+
+// Function for System class' "/" operator unit test.
+void unit_system_divisionOperator(){
+    System sys1("Population 1", 100.0);
+    System sys2("Population 2", 10.0);
+
+    cout << "TEST 13 - System class division operator" << endl;
+    assert((sys1 / sys2) == 10);
+    assert((20.0 / sys2) == 2);
+    assert((sys1 / 20.0) == 5);
+
+    cout << GREEN << "OK!" << RESET << endl;
+}
+
+// Function to run all the System class' unit tests.
 void run_unit_tests_system(){
+    // Calling all the System class' unit test functions.
     unit_system_constructor();
     unit_system_copy_constructor();
     unit_system_destructor();
@@ -110,4 +197,8 @@ void run_unit_tests_system(){
     unit_system_getValue();
     unit_system_setValue();
     unit_system_assingmentOperator();
+    unit_system_sumOperator();
+    unit_system_minusOperator();
+    unit_system_timesOperator();
+    unit_system_divisionOperator();
 }

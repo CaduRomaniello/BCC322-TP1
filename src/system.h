@@ -93,6 +93,106 @@ class System{
             return *this;
         }
 
+        /*!
+            This is the overloaded "+" operator for the System Class.
+        */
+        double operator+(const System& sys){
+            if (this == &sys){
+                return 2.0 * value;
+            }
+
+            return value + sys.getValue();
+        }
+        
+        /*!
+            This is the overloaded "+" operator for the System Class.
+        */
+        friend double operator+(const double& valueSys, const System& sys){
+            return valueSys + sys.getValue();
+        }
+        
+        /*!
+            This is the overloaded "+" operator for the System Class.
+        */
+        friend double operator+(const System& sys, const double& valueSys){
+            return sys.getValue() + valueSys;
+        }
+
+        /*!
+            This is the overloaded "-" operator for the System Class.
+        */
+        double operator-(const System& sys){
+            if (this == &sys){
+                return 0.0;
+            }
+
+            return value - sys.getValue();
+        }
+        
+        /*!
+            This is the overloaded "-" operator for the System Class.
+        */
+        friend double operator-(const System& sys, const double& valueSys){
+            return sys.getValue() - valueSys;
+        }
+        
+        /*!
+            This is the overloaded "-" operator for the System Class.
+        */
+        friend double operator-(const double& valueSys, const System& sys){
+            return valueSys - sys.getValue();
+        }
+
+        /*!
+            This is the overloaded "*" operator for the System Class.
+        */
+        double operator*(const System& sys){
+            if (this == &sys){
+                return value * value;
+            }
+
+            return value * sys.getValue();
+        }
+        
+        /*!
+            This is the overloaded "*"" operator for the System Class.
+        */
+        friend double operator*(const System& sys, const double& valueSys){
+            return sys.getValue() * valueSys;
+        }
+        
+        /*!
+            This is the overloaded "*"" operator for the System Class.
+        */
+        friend double operator*(const double& valueSys, const System& sys){
+            return valueSys * sys.getValue();
+        }
+
+        /*!
+            This is the overloaded "/" operator for the System Class.
+        */
+        double operator/(const System& sys){
+            if (this == &sys){
+                return 1.0;
+            }
+
+            return value / sys.getValue();
+        }
+        
+        /*!
+            This is the overloaded "/" operator for the System Class.
+        */
+        friend double operator/(const double& valueSys, const System& sys){
+            return valueSys / sys.getValue();
+        }
+        
+        /*!
+            This is the overloaded "/" operator for the System Class.
+        */
+        friend double operator/(const System& sys, const double& valueSys){
+            return sys.getValue() / valueSys;
+        }
+
     private:
         /*!
             Sets the isAddedToModel attribute in the System Class.
