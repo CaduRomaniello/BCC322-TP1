@@ -9,7 +9,7 @@ using namespace std;
 
 // Function for exponential functional test.
 void exponentialFuncionalTest(){
-    cout << "TESTE 4 - modelo simples com equacao exponencial" << endl;
+    cout << "TEST 4 - Simple model with exponential equation" << endl;
 
     //Creates elements of the model
     System* pop1 = new System("Populacao 1", 100);
@@ -31,7 +31,7 @@ void exponentialFuncionalTest(){
 
 // Function for logistical functional test.
 void logisticalFuncionalTest(){
-    cout << "TESTE 5 - modelo simples com equacao logistica" << endl;
+    cout << "TEST 5 - Simple model with logistic equation" << endl;
     
     //Creates elements of the model
     System* p1 = new System("Populacao 1", 100);
@@ -53,7 +53,7 @@ void logisticalFuncionalTest(){
 
 // Function for complex functional test.
 void complexFuncionalTest(){
-    cout << "TESTE 6 - modelo complexo" << endl;
+    cout << "TEST 6 - Complex model" << endl;
     
     //Creates elements of the model
     System* q1 = new System("Q1", 100);

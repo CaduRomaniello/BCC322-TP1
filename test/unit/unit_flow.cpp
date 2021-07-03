@@ -3,7 +3,7 @@
 using namespace std;
 
 void unit_flow_constructor() {
-    cout << "Teste 1 - Construtor default da classe Flow sem passagem de parametros" << endl;
+    cout << "TEST 1 - Default constructor of the Flow class without passing parameters" << endl;
 
     ExponencialFlow* flow1 = new ExponencialFlow();
     
@@ -12,7 +12,7 @@ void unit_flow_constructor() {
     assert(flow1->getTarget() == NULL);
 
     cout << GREEN << "OK!" << RESET << endl;
-    cout << "Teste 2 - Construtor default da classe Flow com passagem de parametros" << endl;
+    cout << "TEST 2 - Default constructor of the Flow class with passing parameters" << endl;
 
     System* source = new System("System1", 5.0);
     System* target = new System("System2", 10.0);
@@ -27,7 +27,7 @@ void unit_flow_constructor() {
 }
 
 void unit_flow_copy_constructor() {
-    cout << "Teste 3 - Construtor de copia da classe Flow" << endl;
+    cout << "TEST 3 - Copy constructor of the Flow class" << endl;
 
     ExponencialFlow* flow1 = new ExponencialFlow("Flow1");
     ExponencialFlow* flow2(flow1);
@@ -40,7 +40,7 @@ void unit_flow_copy_constructor() {
 } 
 
 void unit_flow_destructor() {
-    cout << "Teste 4 - Destrutor default da classe Flow" << endl;
+    cout << "TEST 4 - Default destructor of the Flow class" << endl;
 
     double vmBefore, vmAfter, rss;
     memory_usage(vmBefore, rss);
@@ -55,7 +55,7 @@ void unit_flow_destructor() {
 }
 
 void unit_flow_getName() {
-    cout << "Teste 5 - Metodo getName() da classe Flow" << endl;
+    cout << "TEST 5 - Flow class's getName() method" << endl;
     
     ExponencialFlow* flow = new ExponencialFlow("Flow1");
     assert(flow->getName() == "Flow1");
@@ -64,7 +64,7 @@ void unit_flow_getName() {
 }
 
 void unit_flow_setName() {
-    cout << "Teste 6 - Metodo setName() da classe Flow" << endl;
+    cout << "TEST 6 - Flow class's setName() method" << endl;
 
     ExponencialFlow* flow = new ExponencialFlow();
     
@@ -75,7 +75,7 @@ void unit_flow_setName() {
 }
 
 void unit_flow_getSource(){
-    cout << "Teste 7 - Metodo getSource() da classe Flow" << endl;
+    cout << "TEST 7 - Flow class's getSource() method" << endl;
     
     System* system = new System("System de teste");
     ExponencialFlow* flow = new ExponencialFlow("Flow1",system);
@@ -86,7 +86,7 @@ void unit_flow_getSource(){
 }
 
 void unit_flow_setSource(){
-    cout << "Teste 8 - Metodo setSource() da classe Flow" << endl;
+    cout << "TEST 8 - Flow class's setSource() method" << endl;
     
     System* system = new System("System de teste");
     ExponencialFlow* flow1 = new ExponencialFlow("Flow1");
@@ -98,7 +98,7 @@ void unit_flow_setSource(){
 }
 
 void unit_flow_clearSource(){
-    cout << "Teste 9 - Metodo clearSource() da classe Flow" << endl;
+    cout << "TEST 9 - Flow class's clearSource() method" << endl;
     
     System* system = new System("System de teste");
     ExponencialFlow* flow1 = new ExponencialFlow("Flow1",system);
@@ -110,7 +110,7 @@ void unit_flow_clearSource(){
 }
 
 void unit_flow_getTarget(){
-    cout << "Teste 10 - Metodo getTarget() da classe Flow" << endl;
+    cout << "TEST 10 - Flow class's getTarget() method" << endl;
     
     System* system = new System("System de teste");    
     ExponencialFlow* flow = new ExponencialFlow("Flow1",NULL,system);    
@@ -121,7 +121,7 @@ void unit_flow_getTarget(){
 }
 
 void unit_flow_setTarget(){
-    cout << "Teste 11 - Metodo setTarget() da classe Flow" << endl;
+    cout << "TEST 11 - Flow class's setTarget() method" << endl;
     
     System* system = new System("System de teste");
     ExponencialFlow* flow = new ExponencialFlow("Flow1");
@@ -133,7 +133,7 @@ void unit_flow_setTarget(){
 }
 
 void unit_flow_clearTarget(){
-    cout << "Teste 12 - Metodo clearTarget() da classe Flow" << endl;
+    cout << "TEST 12 - Flow class's clearTarget() method" << endl;
     
     System* system = new System("System de teste");    
     ExponencialFlow* flow = new ExponencialFlow("Flow", NULL, system); 
@@ -145,7 +145,7 @@ void unit_flow_clearTarget(){
 }
 
 void unit_flow_assingmentOperator(){
-    cout << "Teste 13 - Operador de atribuicao da classe Flow" << endl;
+    cout << "TEST 13 - Flow class assignment operator" << endl;
     
     ExponencialFlow* flow1 = new ExponencialFlow("Flow1");
     ExponencialFlow* flow2 = new ExponencialFlow();
@@ -159,7 +159,7 @@ void unit_flow_assingmentOperator(){
 }
 
 void unit_flow_execute(){
-    cout << "Teste 14 - Metodo execute() da classe Flow" << endl;
+    cout << "TEST 14 - Flow class's execute() method" << endl;
     
     System* system1 = new System("System de teste 1", 10.0);    
     System* system2 = new System("System de teste 2", 0.0);    

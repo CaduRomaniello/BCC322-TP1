@@ -3,7 +3,7 @@
 using namespace std;
 
 void unit_model_constructor(){
-    cout << "Teste 1 - Construtor default da classe Model sem passagem de parametros" << endl;
+    cout << "TEST 1 - Default constructor of the Model class without passing parameters" << endl;
 
     Model* model1 = new Model();
 
@@ -11,7 +11,7 @@ void unit_model_constructor(){
     assert(model1->getTime() == 0.0);
 
     cout << GREEN << "OK!" << RESET << endl;
-    cout << "Teste 2 - Construtor default da classe Model com passagem de parametros" << endl;
+    cout << "TEST 2 - Default constructor of the Model class with passing parameters" << endl;
 
     System* system1 = new System("System 1");
     System* system2 = new System("System 2");
@@ -41,7 +41,7 @@ void unit_model_constructor(){
 }
 
 void unit_model_copy_constructor(){
-    cout << "Teste 3 - Construtor de cópia da classe Model" << endl;
+    cout << "TEST 3 - Copy constructor of the Model class" << endl;
 
     Model* model1 = new Model();
 
@@ -73,7 +73,7 @@ void unit_model_copy_constructor(){
 }
 
 void unit_model_destructor(){
-    cout << "Teste 4 - Destrutor default da classe Model" << endl;
+    cout << "TEST 4 - Default destructor of the Model class" << endl;
 
     double vmBefore, vmAfter, rss;
     memory_usage(vmBefore, rss);
@@ -96,7 +96,7 @@ void unit_model_destructor(){
 }
 
 void unit_model_getName(){
-    cout << "Teste 5 - Metodo getName() da classe Model" << endl;
+    cout << "TEST 5 - Model class's getName() method" << endl;
 
     Model* model = new Model("Modelo Teste", 0.0);
     assert(model->getName() == "Modelo Teste");
@@ -105,7 +105,7 @@ void unit_model_getName(){
 }
 
 void unit_model_setName(){
-    cout << "Teste 6 - Metodo setName() da classe Model" << endl;
+    cout << "TEST 6 - Model class's setName() method" << endl;
 
     Model* model = new Model();
     model->setName("Modelo Teste");
@@ -115,7 +115,7 @@ void unit_model_setName(){
 }
 
 void unit_model_getTime(){
-    cout << "Teste 7 - Metodo getTime() da classe Model" << endl;
+    cout << "TEST 7 - Model class's getTime() method" << endl;
 
     Model* model = new Model("Modelo Teste", 0.0);
     assert(model->getTime() == 0.0);
@@ -124,7 +124,7 @@ void unit_model_getTime(){
 }
 
 void unit_model_setTime(){
-    cout << "Teste 8 - Metodo setTime() da classe Model" << endl;
+    cout << "TEST 8 - Model class's setTime() method" << endl;
 
     Model* model = new Model("Modelo Teste", 0.0);
     model->setTime(1.0);
@@ -134,7 +134,7 @@ void unit_model_setTime(){
 }
 
 void unit_model_incrementTime(){
-    cout << "Teste 9 - Metodo incrementTime() da classe Model" << endl;
+    cout << "TEST 9 - Model class's incrementTime() method" << endl;
 
     Model* model = new Model("Modelo Teste", 1.0);
     model->incrementTime(1.0);
@@ -144,7 +144,7 @@ void unit_model_incrementTime(){
 }
 
 void unit_model_addSystem(){
-    cout << "Teste 10 - Metodo addSystem() da classe Model" << endl;
+    cout << "TEST 10 - Model class's addSystem() method" << endl;
 
     System* system = new System("System 1");
 
@@ -156,7 +156,7 @@ void unit_model_addSystem(){
 }
 
 void unit_model_removeSystem(){
-    cout << "Teste 11 - Metodo removeSystem() da classe Model" << endl;
+    cout << "TEST 11 - Model class's removeSystem() method" << endl;
 
     System* system = new System("System 1");
 
@@ -170,7 +170,7 @@ void unit_model_removeSystem(){
 }
 
 void unit_model_addFlow(){
-    cout << "Teste 12 - Metodo addFlow() da classe Model" << endl;
+    cout << "TEST 12 - Model class's addFlow() method" << endl;
 
     ExponencialFlow* flow = new ExponencialFlow("Flow 1");
     Model* model = new Model("Modelo Teste", 1.0);
@@ -182,7 +182,7 @@ void unit_model_addFlow(){
 }
 
 void unit_model_removeFlow(){
-    cout << "Teste 13 - Metodo removeFlow() da classe Model" << endl;
+    cout << "TEST 13 - Model class's removeFlow() method" << endl;
 
     ExponencialFlow* flow = new ExponencialFlow("Flow 1");
     Model* model = new Model("Modelo Teste", 1.0);
@@ -195,7 +195,7 @@ void unit_model_removeFlow(){
 }
 
 void unit_model_assingmentOperator(){
-    cout << "Teste 14 - Operador de atribuicao da classe Model" << endl;
+    cout << "TEST 14 - Model class assignment operator" << endl;
 
     Model* model1 = new Model();
 
@@ -228,7 +228,7 @@ void unit_model_assingmentOperator(){
 }
 
 void unit_model_execute(){
-    cout << "Teste 15 - Metodo execute() da classe Model" << endl;
+    cout << "TEST 15 - Model class's execute() method" << endl;
     
     //Creates elements of the model
     System* pop1 = new System("Populacao 1", 100.0);

@@ -11,7 +11,7 @@ using namespace std;
 
 // Function for exponential unit test.
 void exponentialUnitTest(){
-    cout << "TESTE 1 - modelo simples com equacao exponencial" << endl;
+    cout << "TEST 1 - Simple model with exponential equation" << endl;
     
     //Creates elements of the model
     System* pop1 = new System("Populacao 1", 100.0);
@@ -48,7 +48,7 @@ void exponentialUnitTest(){
 
 // Function for logistical unit test.
 void logisticalUnitTest(){
-    cout << "TESTE 2 - modelo simples com equacao logistica" << endl;
+    cout << "TEST 2 - Simple model with logistic equation" << endl;
     
     //Creates elements of the model
     System* p1 = new System("Populacao 1", 100);
@@ -85,7 +85,7 @@ void logisticalUnitTest(){
 
 // Function for complex unit test.
 void complexUnitTest(){
-    cout << "TESTE 3 - modelo complexo" << endl;
+    cout << "TEST 3 - Complex model" << endl;
     
     //Creates elements of the model
     System* q1 = new System("Q1", 100);
