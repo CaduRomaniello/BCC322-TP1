@@ -26,15 +26,17 @@ void unit_system_constructor(){
 }
 
 // Function for System class's copy constructor unit test.
-void unit_system_copy_constructor(){
+void UnitSystem::unit_system_copy_constructor(){
     cout << "TEST 3 - Copy constructor of the System class" << endl;
     
     System* system1 = new System("Test System", 10.0);
     System* system2 = new System(*system1);
+    system1->setName("Original Test System");
+    system1->setValue(20.0);
 
-    // Making assertion to verify if the name property was copied.
+    // Making assertion to verify if the name property was copied before the original's alteration.
     assert(system2->getName() == "Test System");
-    // Making assertion to verify if the value property was copied.
+    // Making assertion to verify if the value property was copied before the original's alteration.
     assert(system2->getValue() == 10.0);
     // Making assertion to verify if the System objects aren't pointing to the same memory.
     assert(system1 != system2);
@@ -117,19 +119,20 @@ void unit_system_setValue(){
 }
 
 // Function for System class' assingment operator unit test.
-void unit_system_assingmentOperator(){
+void UnitSystem::unit_system_assingmentOperator(){
     cout << "TEST 9 - System class assignment operator" << endl;
     
     System* system1 = new System("Test System", 10.0);
     System* system2 = new System();
     *system2 = *system1;
 
+    system1->setName("Original Test System");
+    system1->setValue(100.0);
+
     // Making assertion to verify if the name property was assigned.
     assert(system2->getName() == "Test System");
     // Making assertion to verify if the value property was assigned.
     assert(system2->getValue() == 10.0);
-    // Making assertion to verify if the System objects aren't pointing to the same memory
-    assert(system1 != system2);
 
     cout << GREEN << "OK!" << RESET << endl;
 }
@@ -188,17 +191,22 @@ void unit_system_divisionOperator(){
 
 // Function to run all the System class' unit tests.
 void run_unit_tests_system(){
+
+    UnitSystem* unit_sys = new UnitSystem();
+
     // Calling all the System class' unit test functions.
     unit_system_constructor();
-    unit_system_copy_constructor();
+    unit_sys->unit_system_copy_constructor();
     unit_system_destructor();
     unit_system_getName();
     unit_system_setName();
     unit_system_getValue();
     unit_system_setValue();
-    unit_system_assingmentOperator();
+    unit_sys->unit_system_assingmentOperator();
     unit_system_sumOperator();
     unit_system_minusOperator();
     unit_system_timesOperator();
     unit_system_divisionOperator();
+
+    delete(unit_sys);
 }

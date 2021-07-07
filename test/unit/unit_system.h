@@ -18,16 +18,26 @@
 /**
 * Creation of the unit tests for the System class.
 */
+class UnitSystem{
+    public:
+        UnitSystem(){}
+        ~UnitSystem(){}
+        
+        /*!
+        Function prototype for the System class' copy constructor unit test.
+        */
+        void unit_system_copy_constructor();
+
+        /*!
+        Function prototype for the System class' assingment operator unit test.
+        */
+        void unit_system_assingmentOperator();
+};
 
 /*!
   Function prototype for the System class' constructor unit test.
 */
 void unit_system_constructor();
-
-/*!
-  Function prototype for the System class' copy constructor unit test.
-*/
-void unit_system_copy_constructor();
 
 /*!
   Function prototype for the System class' destructor unit test.
@@ -53,11 +63,6 @@ void unit_system_getValue();
   Function prototype for the System class' method setValue() unit test.
 */
 void unit_system_setValue();
-
-/*!
-  Function prototype for the System class' assingment operator unit test.
-*/
-void unit_system_assingmentOperator();
 
 /*!
   Function prototype for the System class' "+" operator unit test.

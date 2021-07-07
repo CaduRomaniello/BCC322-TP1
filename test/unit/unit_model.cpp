@@ -50,43 +50,38 @@ void unit_model_constructor(){
 }
 
 // Function for Model class's copy constructor unit test.
-void unit_model_copy_constructor(){
+void UnitModel::unit_model_copy_constructor(){
     cout << "TEST 3 - Copy constructor of the Model class" << endl;
 
-    Model* model1 = new Model();
+    System* system1 = new System("System 1", 100.0);    
+    System* system2 = new System("System 2", 0.0);
 
-    System* system1 = new System("System 1");    
-    System* system2 = new System("System 2");
-    
-    vector<System*> systems;
-    
-    systems.push_back(system1);
-    systems.push_back(system2);
+    ExponencialFlow* flow1 = new ExponencialFlow("Flow 1", system1, system2);
+    Model* model1 = new Model("Model 1", 0.0);
+    model1->add(system1);
+    model1->add(system2);   
+    model1->add(flow1); 
 
-    ExponencialFlow* flow1 = new ExponencialFlow("Flow 1");
-   
     Model* model2 = new Model(*model1);
     
-    model2->add(system1);
-    model2->add(system2);   
-    model2->add(flow1);    
-    
-    // Making assertion to verify if the name property was copied.
-    assert(model2->getName() == "");
-    // Making assertion to verify if the time property was copied.
-    assert(model2->getTime() == 0.0);
-    // Making assertion to verify if the Flow object was added to the Model's flows parameter.
-    assert((*(model2->beginFlows()))->getName() == "Flow 1");
-    
-    int counter = 0;    
-    for (auto sys = model2->beginSystems(); sys != model2->endSystems(); ++sys){
-        // Making assertion to verify if the systems were added to the systems property.
-        assert((*sys)->getName() == systems[counter]->getName());
-        counter++;
-    }
+    model1->setName("Original Model 1");
+    cout << model2->systems[0]->getValue() << endl;
+    model1->execute(0.0, 100.0, 1.0);
 
-    // Making assertion to verify if the Model objects aren't pointing to the same memory address.
-    assert(model2 != model1);
+    // Making assertion to verify changes made after model1 execution.
+    cout << model2->systems[0]->getValue() << endl;
+    assert(abs(model2->systems[0]->getValue() - 100.0000) < 0.0001);
+    assert(abs(model2->systems[1]->getValue() - 0.0000) < 0.0001);
+    assert(abs(model2->getTime() - 0.0000) < 0.0001);
+    
+    model2->execute(0.0, 100.0, 1.0);
+
+    assert(abs(model2->systems[0]->getValue() - 36.6032) < 0.0001);
+    assert(abs(model2->systems[1]->getValue() - 63.3968) < 0.0001);
+    assert(abs(model2->getTime() - 100.0) < 0.0001);
+    
+    // Making assertion to verify if the name property was copied before being changed.
+    assert(model2->getName() == "Model 1");
     
     cout << GREEN << "OK!" << RESET << endl;
 }
@@ -247,41 +242,38 @@ void unit_model_removeFlow(){
 }
 
 // Function for the Model class' assignment operator unit test.
-void unit_model_assingmentOperator(){
+void UnitModel::unit_model_assingmentOperator(){
     cout << "TEST 14 - Model class assignment operator" << endl;
 
-    Model* model1 = new Model();
+    System* system1 = new System("System 1", 100.0);    
+    System* system2 = new System("System 2", 0.0);
 
-    System* system1 = new System("System 1");
-    System* system2 = new System("System 2");
+    ExponencialFlow* flow1 = new ExponencialFlow("Flow 1", system1, system2);
+    Model* model1 = new Model("Model 1", 0.0);
+    model1->add(system1);
+    model1->add(system2);   
+    model1->add(flow1); 
 
-    vector<System*> systems;
-    systems.push_back(system1);
-    systems.push_back(system2);
-
-    ExponencialFlow* flow1 = new ExponencialFlow("Flow 1");
     Model* model2 = new Model();
     *model2 = *model1;
-
-    model2->add(system1);
-    model2->add(system2);
-    model2->add(flow1);    
     
-    // Making assertion to verify if the name property was assigned.
-    assert(model2->getName() == "");
-    // Making assertion to verify if the name property was assigned.
-    assert(model2->getTime() == 0.0);
-    assert((*(model2->beginFlows()))->getName() == "Flow 1");
+    model1->setName("Original Model 1");
+    model1->execute(0.0, 100.0, 1.0);
+
+    // Making assertion to verify changes made after model1 execution.
+    assert(abs(model2->systems[0]->getValue() - 100.0) < 0.0001);
+    assert(abs(model2->systems[1]->getValue() - 0.0) < 0.0001);
+    assert(abs(model2->getTime() - 0.0) < 0.0001);
     
-    int counter = 0;
-    for (auto sys = model2->beginSystems(); sys != model2->endSystems(); ++sys){
-        assert((*sys)->getName() == systems[counter]->getName());
-        counter++;
-    }
+    model2->execute(0.0, 100.0, 1.0);
 
-    // Making assertion to verify if the Model objects aren't pointing to the same memory address.
-    assert(model2 != model1);
-
+    assert(abs(model2->systems[0]->getValue() - 36.6032) < 0.0001);
+    assert(abs(model2->systems[1]->getValue() - 63.3968) < 0.0001);
+    assert(abs(model2->getTime() - 100.0) < 0.0001);
+    
+    // Making assertion to verify if the name property was copied before being changed.
+    assert(model2->getName() == "Model 1");
+    
     cout << GREEN << "OK!" << RESET << endl;
 }
 
@@ -320,9 +312,12 @@ void unit_model_execute(){
 
 // Function to run all the Model class' unit tests.
 void run_unit_tests_model(){
+
+    UnitModel* unit_model = new UnitModel();
+    
     // Calling all the Model class' unit test functions.
     unit_model_constructor();
-    unit_model_copy_constructor();
+    unit_model->unit_model_copy_constructor();
     unit_model_destructor();
     unit_model_getName();
     unit_model_setName();
@@ -333,6 +328,8 @@ void run_unit_tests_model(){
     unit_model_removeSystem();
     unit_model_addFlow();
     unit_model_removeFlow();
-    unit_model_assingmentOperator();
+    unit_model->unit_model_assingmentOperator();
     unit_model_execute();
+
+    delete(unit_model);
 }

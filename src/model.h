@@ -3,7 +3,7 @@
 
 #include <vector>
 #include <iostream>
-#include <algorithm>
+// #include <algorithm>
 #include <map>
 #include "./system.h"
 #include "./flow.h"
@@ -22,7 +22,144 @@ class Model{
         vector<System*> systems; /*!< This attribute stores pointers to the systems contained in the model. */
         vector<Flow*> flows; /*!< This attribute stores pointers to the flows contained in the model. */       
 
+        /*!        
+           This is the copy constructor for the Model Class.
+           \param model the model that is going to be cloned.
+           \param systemsVector the vector of system pointers, it prevents memory leak.
+           \param flowsVector the vector of flow pointers, it prevents memory leak.      
+        */ 
+        template <class T>
+        Model (const Model& model){
+            if (this == &model){
+                return;
+            }
+
+            for (System* item : systems){
+                delete(item);
+            } 
+            systems.clear();
+           
+            for (Flow* item : flows){
+                delete(item);
+            } 
+            flows.clear();
+
+            name = model.getName();
+            time = model.getTime();   
+            
+            for (System* item : model.systems){
+                System* copy = new System(*item);
+                add(copy);
+            }         
+
+            for (Flow* item : model.flows){
+                int posSource = -1;
+                int posTarget = -1;
+                int count = 0;
+                // Flow* temp = dynamic_cast<Flow*>(item);
+                T* copy = new T(*item);
+
+                for (System* sys : model.systems){
+                    if (item->getSource() == sys){
+                        posSource = count;
+                    }
+                    if (item->getTarget() == sys){
+                        posTarget = count;
+                    }
+                    if (posSource != -1 && posTarget != -1){
+                        break;
+                    }
+
+                    count++;
+                } 
+
+                if (posSource != -1){
+                    copy->setSource(systems[posSource]);
+                }
+                else{
+                    copy->setSource(NULL);
+                }
+                if (posTarget != -1){
+                    copy->setTarget(systems[posTarget]);
+                }
+                else{
+                    copy->setTarget(NULL);
+                }
+
+                add(copy);
+            }
+            
+        }
+        
+        /*!
+            This is the overloaded assignment operator for the Model Class.
+        */
+        Model& operator=(const Model& model){
+            if (this == &model){
+                return *this;
+            }
+
+            for (System* item : systems){
+                delete(item);
+            } 
+            systems.clear();
+           
+            for (Flow* item : flows){
+                delete(item);
+            } 
+            flows.clear();
+
+            name = model.getName();
+            time = model.getTime();   
+            
+            for (System* item : model.systems){
+                System* copy(item);
+                add(copy);
+            }         
+
+            for (Flow* item : model.flows){
+                int posSource = -1;
+                int posTarget = -1;
+                int count = 0;
+                Flow* copy(item);
+
+                for (System* sys : model.systems){
+                    if (item->getSource() == sys){
+                        posSource = count;
+                    }
+                    if (item->getTarget() == sys){
+                        posTarget = count;
+                    }
+
+                    if (posSource != -1 && posTarget != -1){
+                        break;
+                    }
+
+                    count++;
+                } 
+
+                if (posSource != -1){
+                    copy->setSource(systems[posSource]);
+                }
+                else{
+                    copy->setSource(NULL);
+                }
+                if (posTarget != -1){
+                    copy->setTarget(systems[posTarget]);
+                }
+                else{
+                    copy->setTarget(NULL);
+                }
+
+                add(copy);
+            }
+
+            return *this;
+        }
+
     public:
+        friend class UnitModel; /*!< This Class is used to test the copy constructor and assignment operator of the Model class. */
+
         auto beginSystems( void ) const {return systems.begin();} /*!< Returns the iterator to the beginning of systems attribute. */
         auto endSystems( void ) const {return systems.end();} /*!< Returns the iterator to the end of systems attribute. */
         auto beginFlows( void ) const {return flows.begin();} /*!< Returns the iterator to the beginning of flows attribute. */
@@ -40,15 +177,17 @@ class Model{
             This is the default destructor for the Model Class.
         */
         virtual ~Model(){           
-            // Deletes Systems
-            for (System* item : systems) {
-                delete (item);
-            }
-
             // Deletes Flows
             for (Flow* item : flows) {
                 delete (item);
             }
+            flows.clear();
+
+            // Deletes Systems
+            for (System* item : systems) {
+                delete (item);
+            }
+            systems.clear();
         }
             
         /*!
@@ -96,8 +235,7 @@ class Model{
            \param sys the system to be added.
         */ 
         void add(System* sys){
-            systems.insert(endSystems(), sys);
-            sys->setIsAddedToModel(true);
+            systems.insert(endSystems(), sys);            
         }
         
         /*!        
@@ -105,8 +243,8 @@ class Model{
            \param flow the flow to be added.
         */ 
         void add(Flow* flow){
-            flows.insert(endFlows(), flow);            
-            flow->setIsAddedToModel(true);
+            flows.insert(endFlows(), flow);       
+           
         }
         
         /*!        
@@ -118,8 +256,7 @@ class Model{
             auto i = beginSystems();
             for (System* item : systems){
                 if (sys == item){
-                    systems.erase(i);
-                    item->setIsAddedToModel(false);
+                    systems.erase(i);                    
                     break;
                 }
                 ++i;
@@ -136,8 +273,7 @@ class Model{
             auto i = beginFlows();
             for (Flow* item : flows){
                 if (flow == item){
-                    flows.erase(i);
-                    item->setIsAddedToModel(false);
+                    flows.erase(i);                   
                     break;
                 }
                 ++i;
@@ -185,56 +321,6 @@ class Model{
             time += increment;
         }
 
-        /*!        
-           This is the copy constructor for the Model Class.
-           \param model the model that is going to be cloned.
-           \param systemsVector the vector of system pointers, it prevents memory leak.
-           \param flowsVector the vector of flow pointers, it prevents memory leak.      
-        */ 
-        Model (const Model& model){
-            if (this == &model){
-                return;
-            }
-
-            name = model.getName();
-            time = model.getTime();   
-            
-            for (System* item : systems){
-                System* copy(item);
-                systems.insert(endSystems(), copy);
-            }         
-
-            for (Flow* item : flows){
-                Flow* copy(item);
-                flows.insert(endFlows(), copy);
-            }
-           
-        }
-        
-        /*!
-            This is the overloaded assignment operator for the Model Class.
-        */
-        Model& operator=(const Model& model){
-            if (this == &model){
-                return *this;
-            }
-
-            name = model.getName();
-            time = model.getTime();
-
-
-            for (System* item : systems){
-                System* copy(item);
-                systems.insert(endSystems(), copy);
-            }
-
-            for (Flow* item : flows){
-                Flow* copy(item);
-                flows.insert(endFlows(), copy);
-            }
-
-            return *this;
-        }
 };
 
 #endif

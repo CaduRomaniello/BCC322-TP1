@@ -18,16 +18,25 @@
 /**
 * Creation of the unit tests for the Model class.
 */
+class UnitModel{
+    public:
+        UnitModel(){}
+        ~UnitModel(){}
+        
+        /*!
+          Function prototype for the Model class' copy constructor unit test.
+        */
+        void unit_model_copy_constructor();
 
+        /*!
+          Function prototype for the Model class' assingment operator unit test.
+        */
+        void unit_model_assingmentOperator();
+};
 /*!
   Function prototype for the Model class' constructor unit test.
 */
 void unit_model_constructor();
-
-/*!
-  Function prototype for the Model class' copy constructor unit test.
-*/
-void unit_model_copy_constructor();
 
 /*!
   Function prototype for the Model class' destructor unit test.
@@ -78,11 +87,6 @@ void unit_model_setTime();
   Function prototype for the Model class' method incrementTime() unit test.
 */
 void unit_model_incrementTime();
-
-/*!
-  Function prototype for the Model class' assingment operator unit test.
-*/
-void unit_model_assingmentOperator();
 
 /*!
   Function prototype for the function that runs all the unit tests of the Model class.

@@ -17,6 +17,23 @@
 * Creation of the unit tests for the Flow class.
 */
 
+class UnitFlow{
+
+    public:
+        UnitFlow(){}
+        ~UnitFlow(){}
+        
+        /*!
+          Function prototype for the Flow class' copy constructor unit test.
+        */
+        void unit_flow_copy_constructor();
+        /*!
+          Function prototype for the Flow class' assingment operator unit test.
+        */
+        void unit_flow_assingmentOperator();
+
+};
+
 //! Class ExponencialFlow
 /**
 * This Class represents a flow with limitless growth, and is used in the Exponencial Model test.
@@ -43,11 +60,6 @@ class ExponencialFlow : public Flow{
   Function prototype for the Flow class' constructor unit test.
 */
 void unit_flow_constructor();
-
-/*!
-  Function prototype for the Flow class' copy constructor unit test.
-*/
-void unit_flow_copy_constructor();
 
 /*!
   Function prototype for the Flow class' destructor unit test.
@@ -93,11 +105,6 @@ void unit_flow_setTarget();
   Function prototype for the Flow class' method clearTarget() unit test.
 */
 void unit_flow_clearTarget();
-
-/*!
-  Function prototype for the Flow class' assingment operator unit test.
-*/
-void unit_flow_assingmentOperator();
 
 /*!
   Function prototype for the Flow class' method execute() unit test.

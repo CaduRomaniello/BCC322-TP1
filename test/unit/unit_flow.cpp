@@ -34,11 +34,19 @@ void unit_flow_constructor() {
 }
 
 // Function for Flow class's copy constructor unit test.
-void unit_flow_copy_constructor() { 
+void UnitFlow::unit_flow_copy_constructor() { 
     cout << "TEST 3 - Copy constructor of the Flow class" << endl;
 
+    System* sys1 = new System("Sys 1", 5.0);
+    System* sys2 = new System("Sys 2", 6.0);
+
     ExponencialFlow* flow1 = new ExponencialFlow("Flow 1");
-    ExponencialFlow* flow2(flow1);
+    // ExponencialFlow* flow2(dynamic_cast<Flow*>(flow1));
+    ExponencialFlow* flow2 = new ExponencialFlow(*flow1);
+
+    flow1->setName("Original Flow 1");
+    flow1->setSource(sys1);
+    flow1->setTarget(sys2);
     
     // Making assertion to verify if the name property was copied.
     assert(flow2->getName() == "Flow 1");
@@ -60,7 +68,7 @@ void unit_flow_destructor() {
     memory_usage(vmBefore, rss);
   
     ExponencialFlow* flow = new ExponencialFlow("Flow");
-    delete flow;
+    delete(flow);
 
     // Getting the memory usage after the creation and destruction of a Flow object.
     memory_usage(vmAfter, rss);
@@ -183,12 +191,19 @@ void unit_flow_clearTarget(){
 }
 
 // Function for Flow class' assingment operator unit test.
-void unit_flow_assingmentOperator(){
+void UnitFlow::unit_flow_assingmentOperator(){
     cout << "TEST 13 - Flow class assignment operator" << endl;
     
+    System* sys1 = new System("Sys 1", 5.0);
+    System* sys2 = new System("Sys 2", 6.0);
+
     ExponencialFlow* flow1 = new ExponencialFlow("Flow 1");
     ExponencialFlow* flow2 = new ExponencialFlow();
     *flow2 = *flow1;
+    
+    flow1->setName("Original Flow 1");
+    flow1->setSource(sys1);
+    flow1->setTarget(sys2);
     
     // Making assertion to verify if the name property was assigned.
     assert(flow2->getName() == "Flow 1");
@@ -217,9 +232,12 @@ void unit_flow_execute(){
 
 // Function to run all the Flow class' unit tests.
 void run_unit_tests_flow() {
+
+    UnitFlow* unit_flow = new UnitFlow();
+
     // Calling all the Flow class' unit test functions.
     unit_flow_constructor();  
-    unit_flow_copy_constructor();
+    unit_flow->unit_flow_copy_constructor();
     unit_flow_destructor(); 
     unit_flow_getName();
     unit_flow_setName();
@@ -229,6 +247,8 @@ void run_unit_tests_flow() {
     unit_flow_getTarget();
     unit_flow_setTarget();
     unit_flow_clearTarget();
-    unit_flow_assingmentOperator();
+    unit_flow->unit_flow_assingmentOperator();
     unit_flow_execute();
+
+    delete(unit_flow);
 }

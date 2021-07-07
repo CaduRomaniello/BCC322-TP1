@@ -16,11 +16,40 @@ class Flow{
         string name; /*!< This attribute contains a name for the flow. */
         System* source; /*!< This attribute stores a pointer to the source system of a flow. */
         System* target; /*!< This attribute stores a pointer to the target system of a flow. */
-        bool isAddedToModel; /*!< This attribute is True if the Flow is added to a Model, and it is False otherwise. */
+
+        /*!
+            This is the copy constructor for the Flow Class.
+            \param flow the flow that is going to be cloned.
+        */
+        Flow (const Flow& flow){
+            if (this == &flow){
+                return;
+            }
+            
+            name = flow.getName();
+            source = NULL;
+            target = NULL;
+        }
+
+        /*!
+            This is the overloaded assignment operator for the Flow Class.
+        */
+        Flow& operator=(const Flow& flow){
+            if (this == &flow){
+                return *this;
+            }
+
+            name = flow.getName();
+            source = NULL;
+            target = NULL;
+
+            return *this;
+        }
 
     public:
         friend class Model; /*!< This Class represents a model in the General Systems Theory implemented in this code. */
-        
+        friend class UnitFlow; /*!< This Class is used to test the copy constructor and assignment operator of the Flow class. */
+
         /*!
             This is the default constructor for the Flow Class.
             \param name the name of the Flow.
@@ -28,23 +57,12 @@ class Flow{
             \param target a pointer to the target system of the Flow.
             \return Flow - a Flow Class object, with it's isCopy attribute set to false.
         */
-        Flow(string name = "", System* source = NULL, System* target = NULL):name(name), source(source), target(target), isAddedToModel(false){}
+        Flow(string name = "", System* source = NULL, System* target = NULL):name(name), source(source), target(target){}
         
         /*!
             This is the default destructor for the Flow Class.
         */
-        virtual ~Flow(){
-            /*
-             * Verifying if the flow is a copy, if true it's instances for source and target should be deleted
-             * to avoid memory leak.
-             */
-            if (getSource() != NULL && !(getSource()->getIsAddedToModel())){
-                delete(source);
-            }
-            if (getTarget() != NULL && !(getTarget()->getIsAddedToModel())){
-                delete(target);
-            }
-        }
+        virtual ~Flow(){}
 
         /*!
             A pure virtual method that will be inherited by subclasses created by the user, and that will contain
@@ -113,87 +131,6 @@ class Flow{
         void clearTarget() {
             target = NULL;
         }
-
-        /*!
-            This is the copy constructor for the Flow Class.
-            \param flow the flow that is going to be cloned.
-        */
-        Flow (const Flow& flow){
-            if (this == &flow){
-                return;
-            }
-
-            if(getSource() != NULL && !(source->getIsAddedToModel())){
-                delete (getSource());
-            }
-
-            if(getTarget() != NULL && !(target->getIsAddedToModel())){
-                delete (getTarget());
-            }
-            
-            System* sourceCopy = NULL;
-            if(flow.getSource() != NULL)
-                sourceCopy = new System(flow.getSource()->getName(), flow.getSource()->getValue());
-
-            System* targetCopy = NULL;
-            if(flow.getTarget() != NULL)
-                targetCopy = new System(flow.getTarget()->getName(), flow.getTarget()->getValue());
-            
-            name = flow.getName();           
-            source = sourceCopy;
-            target = targetCopy;
-            isAddedToModel = false;
-        }
-
-        /*!
-            This is the overloaded assignment operator for the Flow Class.
-        */
-        Flow& operator=(const Flow& flow){
-            if (this == &flow){
-                return *this;
-            }
-
-            if(getSource() != NULL && !(source->getIsAddedToModel())){
-                delete (getSource());
-            }
-
-            if(getTarget() != NULL && !(target->getIsAddedToModel())){
-                delete (getTarget());
-            }
-
-            System* sourceCopy = NULL;
-            if(flow.getSource() != NULL)
-                sourceCopy = new System(flow.getSource()->getName(), flow.getSource()->getValue());
-
-            System* targetCopy = NULL;
-            if(flow.getTarget() != NULL)
-                targetCopy = new System(flow.getTarget()->getName(), flow.getTarget()->getValue());
-
-            name = flow.getName();
-            source = sourceCopy;
-            target = targetCopy;
-            isAddedToModel = false;
-
-            return *this;
-        }
-
-    private:
-        /*!
-            Returns the isAddedToModel attribute in the Flow Class. 
-            \return bool - the content of isAddedToModel attribute.
-        */
-        bool getIsAddedToModel() const{
-            return isAddedToModel;
-        }
-        
-        /*!
-            Sets the isAddedToModel attribute in the Flow Class.   
-            \param flowInModel which will be set to the current flow.
-        */
-        void setIsAddedToModel(bool flowInModel) {
-            isAddedToModel = flowInModel;
-        }
-
 };
 
 #endif
