@@ -1,3 +1,4 @@
+#include <assert.h>
 #include "unit_system.h" 
 
 using namespace std;
@@ -6,7 +7,7 @@ using namespace std;
 void unit_system_constructor(){
     cout << "TEST 1 - Default constructor of the System class without passing parameters" << endl;
     
-    System* system1 = new System();
+    System* system1 = new SystemImpl();
     // Making assertion to verify if the name property was initialized with the default data.
     assert(system1->getName() == "");
     // Making assertion to verify if the value property was initialized with the default data. 
@@ -16,7 +17,7 @@ void unit_system_constructor(){
 
     cout << "TEST 2 - Default constructor of the System class with passing parameters" << endl; 
     
-    System* system2 = new System("Test System", 10.0);
+    System* system2 = new SystemImpl("Test System", 10.0);
     // Making assertion to verify if the name property was initialized with the parameter specified.
     assert(system2->getName() == "Test System");
     // Making assertion to verify if the value property was initialized with the parameter specified. 
@@ -29,8 +30,8 @@ void unit_system_constructor(){
 void UnitSystem::unit_system_copy_constructor(){
     cout << "TEST 3 - Copy constructor of the System class" << endl;
     
-    System* system1 = new System("Test System", 10.0);
-    System* system2 = new System(*system1);
+    SystemImpl* system1 = new SystemImpl("Test System", 10.0);
+    System* system2 = new SystemImpl(*system1);
     system1->setName("Original Test System");
     system1->setValue(20.0);
 
@@ -53,7 +54,7 @@ void unit_system_destructor(){
     // Getting the memory usage previous to the creation of a system.
     memory_usage(vmBefore, rss);
     
-    System* system = new System("Test System", 10.0);
+    System* system = new SystemImpl("Test System", 10.0);
     delete system;
 
     // Getting the memory usage after the creation and destruction of a System object.
@@ -70,7 +71,7 @@ void unit_system_destructor(){
 void unit_system_getName(){
     cout << "TEST 5 - System class's getName() method" << endl;
     
-    System* system = new System("Test System", 10.0);
+    System* system = new SystemImpl("Test System", 10.0);
 
     // Making assertion to verify if the method returns the System class name and if it's
     // equal to the parameter previously passed. 
@@ -83,7 +84,7 @@ void unit_system_getName(){
 void unit_system_setName(){
     cout << "TEST 6 - System class's setName() method" << endl;
     
-    System* system = new System("Test System", 10.0);
+    System* system = new SystemImpl("Test System", 10.0);
     system->setName("Altered Name");
 
     // Making assertion to verify if the data of the name property has been altered.
@@ -96,7 +97,7 @@ void unit_system_setName(){
 void unit_system_getValue(){
     cout << "TEST 7 - System class's getValue() method" << endl;
 
-    System* system = new System("Test System", 10.0);
+    System* system = new SystemImpl("Test System", 10.0);
 
     // Making assertion to verify if the method returns the System class value and if it's
     // equal to the parameter previously passed.
@@ -109,7 +110,7 @@ void unit_system_getValue(){
 void unit_system_setValue(){
     cout << "TEST 8 - System class's setValue() method" << endl;
 
-    System* system = new System("Test System", 10.0);
+    System* system = new SystemImpl("Test System", 10.0);
     system->setValue(20.0);
     
     // Making assertion to verify if the data of the value property has been altered.
@@ -122,8 +123,8 @@ void unit_system_setValue(){
 void UnitSystem::unit_system_assingmentOperator(){
     cout << "TEST 9 - System class assignment operator" << endl;
     
-    System* system1 = new System("Test System", 10.0);
-    System* system2 = new System();
+    SystemImpl* system1 = new SystemImpl("Test System", 10.0);
+    SystemImpl* system2 = new SystemImpl();
     *system2 = *system1;
 
     system1->setName("Original Test System");
@@ -139,52 +140,52 @@ void UnitSystem::unit_system_assingmentOperator(){
 
 // Function for System class' "+" operator unit test.
 void unit_system_sumOperator(){
-    System sys1("Population 1", 100.0);
-    System sys2("Population 2", 10.0);
+    SystemImpl* sys1 = new SystemImpl("Population 1", 100.0);
+    SystemImpl* sys2 = new SystemImpl("Population 2", 10.0);
 
     cout << "TEST 10 - System class sum operator" << endl;
-    assert((sys1 + sys2) == 110);
-    assert((20.0 + sys2) == 30);
-    assert((sys1 + 20.0) == 120);
+    assert(((*sys1) + (*sys2)) == 110);
+    assert((20.0 + (*sys2)) == 30);
+    assert(((*sys1) + 20.0) == 120);
 
     cout << GREEN << "OK!" << RESET << endl;
 }
 
 // Function for System class' "-" operator unit test.
 void unit_system_minusOperator(){
-    System sys1("Population 1", 100.0);
-    System sys2("Population 2", 10.0);
+    SystemImpl* sys1 = new SystemImpl("Population 1", 100.0);
+    SystemImpl* sys2 = new SystemImpl("Population 2", 10.0);
 
     cout << "TEST 11 - System class subtraction operator" << endl;
-    assert((sys1 - sys2) == 90);
-    assert((20.0 - sys2) == 10);
-    assert((sys1 - 20.0) == 80);
+    assert(((*sys1) - (*sys2)) == 90);
+    assert((20.0 - (*sys2)) == 10);
+    assert(((*sys1) - 20.0) == 80);
 
     cout << GREEN << "OK!" << RESET << endl;
 }
 
 // Function for System class' "*" operator unit test.
 void unit_system_timesOperator(){
-    System sys1("Population 1", 100.0);
-    System sys2("Population 2", 10.0);
+    SystemImpl* sys1 = new SystemImpl("Population 1", 100.0);
+    SystemImpl* sys2 = new SystemImpl("Population 2", 10.0);
 
     cout << "TEST 12 - System class multiplication operator" << endl;
-    assert((sys1 * sys2) == 1000);
-    assert((20.0 * sys2) == 200);
-    assert((sys1 * 20.0) == 2000);
+    assert(((*sys1) * (*sys2)) == 1000);
+    assert((20.0 * (*sys2)) == 200);
+    assert(((*sys1) * 20.0) == 2000);
 
     cout << GREEN << "OK!" << RESET << endl;
 }
 
 // Function for System class' "/" operator unit test.
 void unit_system_divisionOperator(){
-    System sys1("Population 1", 100.0);
-    System sys2("Population 2", 10.0);
+    SystemImpl* sys1 = new SystemImpl("Population 1", 100.0);
+    SystemImpl* sys2 = new SystemImpl("Population 2", 10.0);
 
     cout << "TEST 13 - System class division operator" << endl;
-    assert((sys1 / sys2) == 10);
-    assert((20.0 / sys2) == 2);
-    assert((sys1 / 20.0) == 5);
+    assert(((*sys1) / (*sys2)) == 10);
+    assert((20.0 / (*sys2)) == 2);
+    assert(((*sys1) / 20.0) == 5);
 
     cout << GREEN << "OK!" << RESET << endl;
 }
