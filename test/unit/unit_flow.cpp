@@ -108,7 +108,7 @@ void unit_flow_getSource(){
     cout << "TEST 7 - Flow class's getSource() method" << endl;
     
     System* system = new SystemImpl("Test System");
-    ExponencialFlow* flow = new ExponencialFlow("Flow 1",system);
+    ExponencialFlow* flow = new ExponencialFlow("Flow 1", system);
 
     // Making assertion to verify if the method returns the Flow class source system and if it's
     // equal to the parameter previously passed. 
