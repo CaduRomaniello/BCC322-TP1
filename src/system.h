@@ -60,6 +60,14 @@ class System{
         */
         virtual ~System(){}
 
+        ////////////// Alt 07/07
+        // virtual System* clone() {
+        //     System* result = new System();
+        //     CopyTo(*this, result);
+
+        //     return result;
+        // }
+
         /*!
             Sets the name attribute in the System Class.
             \param sysName which will be set to the current system.

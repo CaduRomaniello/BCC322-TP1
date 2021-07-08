@@ -2,6 +2,7 @@
 #define FLOW_H
 
 #include <string>
+#include <iostream>
 #include "./system.h"
 
 using namespace std;
@@ -22,6 +23,7 @@ class Flow{
             \param flow the flow that is going to be cloned.
         */
         Flow (const Flow& flow){
+            cout << "Copiei um flow" << endl;
             if (this == &flow){
                 return;
             }
@@ -45,6 +47,21 @@ class Flow{
 
             return *this;
         }
+
+
+        //////////////////////// Alterado dia 07/07
+        // static void CopyTo(const Flow& from, Flow& to){
+            
+        //     to.source = from.source->clone();
+
+        // }
+
+        // virtual Flow* clone(){
+        //     Flow* result = new Flow();
+        //     CopyTo(*this, result);
+
+        //     return result;
+        // }
 
     public:
         friend class Model; /*!< This Class represents a model in the General Systems Theory implemented in this code. */

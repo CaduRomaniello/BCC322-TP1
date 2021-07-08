@@ -62,14 +62,22 @@ void UnitModel::unit_model_copy_constructor(){
     model1->add(system2);   
     model1->add(flow1); 
 
+    // cout << "OOO CARAIO" << endl;
+
     Model* model2 = new Model(*model1);
+    // cout << model1->systems[0] << " " << model2->systems[0] << endl;
+
+    // cout << model2->getName() << endl;
+    // Model* model2 = new Model(*model1);
     
     model1->setName("Original Model 1");
-    cout << model2->systems[0]->getValue() << endl;
+    
+    // cout << model2->getName() << endl;
+    // cout << model2->systems[0]->getValue() << endl;
     model1->execute(0.0, 100.0, 1.0);
-
+    
     // Making assertion to verify changes made after model1 execution.
-    cout << model2->systems[0]->getValue() << endl;
+    // cout << model2->systems[0]->getValue() << endl;
     assert(abs(model2->systems[0]->getValue() - 100.0000) < 0.0001);
     assert(abs(model2->systems[1]->getValue() - 0.0000) < 0.0001);
     assert(abs(model2->getTime() - 0.0000) < 0.0001);

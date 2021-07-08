@@ -28,17 +28,18 @@ class Model{
            \param systemsVector the vector of system pointers, it prevents memory leak.
            \param flowsVector the vector of flow pointers, it prevents memory leak.      
         */ 
-        template <class T>
         Model (const Model& model){
+            cout << "Construtor de cópia"<< endl;
             if (this == &model){
                 return;
             }
+            // cout << "*==========================*"<< endl;
 
             for (System* item : systems){
                 delete(item);
-            } 
-            systems.clear();
-           
+            }           
+            systems.clear();            
+            
             for (Flow* item : flows){
                 delete(item);
             } 
@@ -51,13 +52,25 @@ class Model{
                 System* copy = new System(*item);
                 add(copy);
             }         
+            
 
             for (Flow* item : model.flows){
                 int posSource = -1;
                 int posTarget = -1;
                 int count = 0;
                 // Flow* temp = dynamic_cast<Flow*>(item);
-                T* copy = new T(*item);
+                // T* copy = new T(*item);
+                // Flow* copy(*item);
+                // T* copy = new T(*item);
+                
+                cout << "+==========================+"<< endl;
+                Flow* dynamic_cast_item = dynamic_cast<Flow*>(item);
+                Flow* copy;
+                *copy = *dynamic_cast_item;
+                cout << "*==========================*"<< endl;
+                
+                // cout << *copy == *item << endl;
+                cout << copy << " " << item << endl;
 
                 for (System* sys : model.systems){
                     if (item->getSource() == sys){
@@ -171,7 +184,7 @@ class Model{
             \param time the time for the Model Class to run.
             \return Model - a Model Class object.
         */
-        Model(string name="", double time=0.0):name(name), time(time){}
+        Model(string name="", double time=0.0):name(name), time(time){cout << "Construtor default" << endl;}
         
         /*!
             This is the default destructor for the Model Class.
