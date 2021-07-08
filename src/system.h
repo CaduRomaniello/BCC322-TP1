@@ -14,51 +14,12 @@ using namespace std;
 */
 class System{
 
-    // protected:
-        // string name; /*!< This attribute contains a name for the system. */
-        // double value; /*!< This attribute contains the actual value of the system. */
-
-        // /*!
-        //     This is the copy constructor for the System Class.
-        //     \param sys the system that is going to be cloned.
-        // */
-        // System (const System& sys){
-        //     if (this == &sys){
-        //         return;
-        //     }
-            
-        //     name = sys.getName();
-        //     value = sys.getValue();           
-        // }
-
-        // /*!
-        //     This is the overloaded assignment operator for the System Class.
-        // */
-        // System& operator=(const System& sys){
-        //     if (this == &sys){
-        //         return *this;
-        //     }
-
-        //     name = sys.getName();
-        //     value = sys.getValue();          
-
-        //     return *this;
-        // }
-
     public:
-        /*!
-            This is the default constructor for the System Class.
-            \param name the name of the System.
-            \param value the initial value of the System.
-            \return System - a System Class object.
-        */
-        // System();
-
         /*!
             This is the default destructor for the System Class.
         */
         virtual ~System(){}
-
+     
         /*!
             Sets the name attribute in the System Class.
             \param sysName which will be set to the current system.

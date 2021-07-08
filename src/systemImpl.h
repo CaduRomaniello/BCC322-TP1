@@ -7,7 +7,7 @@ using namespace std;
 
 //! Class SystemImpl
 /**
-* This Class represents a SystemImpl in the General SystemImpls Theory implemented in this code.
+* This Class represents a SystemImpl in the General Systems Theory implemented in this code.
 */
 class SystemImpl : public System{
 
@@ -19,7 +19,7 @@ class SystemImpl : public System{
             This is the copy constructor for the SystemImpl Class.
             \param sys the SystemImpl that is going to be cloned.
         */
-        SystemImpl (const SystemImpl& sys);
+        // SystemImpl (const SystemImpl& sys);
 
         /*!
             This is the overloaded assignment operator for the SystemImpl Class.
@@ -27,8 +27,10 @@ class SystemImpl : public System{
         SystemImpl& operator=(const SystemImpl& sys);
 
     public:
-        friend class Flow; /*!< This Class represents a flow in the General SystemImpls Theory implemented in this code. */
-        friend class Model; /*!< This Class represents a model in the General SystemImpls Theory implemented in this code. */
+        SystemImpl (const SystemImpl& sys);
+
+        friend class Flow; /*!< This Class represents a flow in the General Systems Theory implemented in this code. */
+        friend class ModelImpl; /*!< This Class represents a model in the General Systems Theory implemented in this code. */
         friend class UnitSystem; /*!< This Class is used to test the copy constructor and assignment operator of the SystemImpl class. */
 
         /*!
@@ -71,62 +73,49 @@ class SystemImpl : public System{
         /*!
             This is the overloaded "+" operator for the SystemImpl Class.
         */
-        friend double operator+(const SystemImpl& sys, const SystemImpl& sys2);
+        double operator+(const SystemImpl& sys);
         
         /*!
             This is the overloaded "+" operator for the SystemImpl Class.
         */
-        friend double operator+(const double& valueSys, const SystemImpl& sys);
-        /*!
-            This is the overloaded "+" operator for the SystemImpl Class.
-        */
-        friend double operator+(const SystemImpl& sys, const double& valueSys);
+        double operator+(const double& valueSys);
 
         /*!
             This is the overloaded "-" operator for the SystemImpl Class.
         */
-        friend double operator-(const SystemImpl& sys, const SystemImpl& sys2);
+        double operator-(const SystemImpl& sys);
         
         /*!
             This is the overloaded "-" operator for the SystemImpl Class.
         */
-        friend double operator-(const SystemImpl& sys, const double& valueSys);
-        
-        /*!
-            This is the overloaded "-" operator for the SystemImpl Class.
-        */
-        friend double operator-(const double& valueSys, const SystemImpl& sys);
+        double operator-(const double& valueSys);
 
         /*!
             This is the overloaded "*" operator for the SystemImpl Class.
         */
-        friend double operator*(const SystemImpl& sys, const SystemImpl& sys2);
+        double operator*(const SystemImpl& sys);
         
         /*!
             This is the overloaded "*"" operator for the SystemImpl Class.
         */
-        friend double operator*(const SystemImpl& sys, const double& valueSys);
-
-        /*!
-            This is the overloaded "*"" operator for the SystemImpl Class.
-        */
-        friend double operator*(const double& valueSys, const SystemImpl& sys);
+        double operator*(const double& valueSys);
 
         /*!
             This is the overloaded "/" operator for the SystemImpl Class.
         */
-        friend double operator/(const SystemImpl& sys, const SystemImpl& sys2);
+        double operator/(const SystemImpl& sys);
         
         /*!
             This is the overloaded "/" operator for the SystemImpl Class.
         */
-        friend double operator/(const double& valueSys, const SystemImpl& sys);
-        
-        /*!
-            This is the overloaded "/" operator for the SystemImpl Class.
-        */
-        friend double operator/(const SystemImpl& sys, const double& valueSys);
+        double operator/(const double& valueSys);
 
 };
+
+
+double operator+(const double& valueSys, const SystemImpl& sys);
+double operator-(const double& valueSys, const SystemImpl& sys);
+double operator*(const double& valueSys, const SystemImpl& sys);
+double operator/(const double& valueSys, const SystemImpl& sys);
 
 #endif

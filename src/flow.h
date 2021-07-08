@@ -36,40 +36,20 @@ class Flow{
             This is the overloaded assignment operator for the Flow Class.
         */
         Flow& operator=(const Flow& flow){
-            // cout << "Entrei operador de atribuição" << endl;
             if (this == &flow){
                 return *this;
             }
-            // cout << "E não sou o mesmo ponteiro" << endl;
 
             setName(flow.getName());
-            // cout << "Setei o nome" << endl;
             setSource(NULL);
-            // cout << "Setei o source" << endl;
             setTarget(NULL);
-            // cout << "Setei o target" << endl;
-            // cout << "To mandando retorno" << endl;
 
             return *this;
         }
 
-
-        //////////////////////// Alterado dia 07/07
-        // static void CopyTo(const Flow& from, Flow& to){
-            
-        //     to.source = from.source->clone();
-
-        // }
-
-        // virtual Flow* clone(){
-        //     Flow* result = new Flow();
-        //     CopyTo(*this, result);
-
-        //     return result;
-        // }
-
     public:
         friend class Model; /*!< This Class represents a model in the General Systems Theory implemented in this code. */
+        friend class ModelImpl; /*!< This Class represents a model in the General Systems Theory implemented in this code. */
         friend class UnitFlow; /*!< This Class is used to test the copy constructor and assignment operator of the Flow class. */
 
         /*!

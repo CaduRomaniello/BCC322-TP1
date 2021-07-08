@@ -40,9 +40,6 @@ void UnitFlow::unit_flow_copy_constructor() {
     System* sys1 = new SystemImpl("Sys 1", 5.0);
     System* sys2 = new SystemImpl("Sys 2", 6.0);
 
-    // ExponencialFlow* flow1 = new ExponencialFlow("Flow 1");
-    // ExponencialFlow* flow2 = new ExponencialFlow(*flow1);
-
     ExponencialFlow* flow1 = new ExponencialFlow("Flow 1");
     Flow* flow2 = new ExponencialFlow(*flow1); 
 
