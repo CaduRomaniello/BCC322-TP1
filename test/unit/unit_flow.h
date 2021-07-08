@@ -5,6 +5,7 @@
 #include <iostream>
 #include <string>
 
+#include "../../src/systemImpl.h"
 #include "../../src/system.h"
 #include "../../src/flow.h"
 #include "./utils/mem_usage.h"

@@ -1,8 +1,9 @@
 #ifndef FUNCTIONAL_TEST
 #define FUNCTIONAL_TEST
 
-#include "../../src/system.h"
+#include "../../src/systemImpl.h"
 #include "../../src/flow.h"
+#include "../../src/model.h"
 
 #define RESET "\033[0m"  /* Escape sequence to reset color output to default. */
 #define GREEN "\033[32m" /* Escape sequence to a green color output. */

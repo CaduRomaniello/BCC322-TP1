@@ -37,13 +37,19 @@ class Flow{
             This is the overloaded assignment operator for the Flow Class.
         */
         Flow& operator=(const Flow& flow){
+            // cout << "Entrei operador de atribuição" << endl;
             if (this == &flow){
                 return *this;
             }
+            // cout << "E não sou o mesmo ponteiro" << endl;
 
-            name = flow.getName();
-            source = NULL;
-            target = NULL;
+            setName(flow.getName());
+            // cout << "Setei o nome" << endl;
+            setSource(NULL);
+            // cout << "Setei o source" << endl;
+            setTarget(NULL);
+            // cout << "Setei o target" << endl;
+            // cout << "To mandando retorno" << endl;
 
             return *this;
         }

@@ -1,17 +1,23 @@
-all_unit: ./test/unit/main.cpp mem_usage.dll unit_model.dll unit_flow.dll unit_system.dll model.dll flow.dll system.dll 
-	g++ ./test/unit/main.cpp -o ./bin/unit_tests ./bin/mem_usage.dll ./bin/unit_model.dll ./bin/unit_flow.dll ./bin/unit_system.dll
+all_unit: ./test/unit/main.cpp mem_usage.dll unit_model.dll unit_flow.dll systemImpl.dll unit_system.dll model.dll flow.dll system.dll 
+	g++ ./test/unit/main.cpp -o ./bin/unit_tests ./bin/mem_usage.dll ./bin/systemImpl.dll ./bin/unit_model.dll ./bin/unit_flow.dll ./bin/unit_system.dll
 
-all_funcional: ./test/funcional/main.cpp funcional_tests.dll model.dll flow.dll system.dll 
-	g++ ./test/funcional/main.cpp -o ./bin/funcional_tests ./bin/funcional_tests.dll
+all_funcional: ./test/funcional/main.cpp funcional_tests.dll model.dll flow.dll system.dll systemImpl.dll 
+	g++ ./test/funcional/main.cpp -o ./bin/funcional_tests ./bin/systemImpl.dll ./bin/funcional_tests.dll
 
-system.dll: ./src/system.h
+system.dll: ./src/system.h 
 	g++ -Wall -g -c ./src/system.h -o ./bin/system.dll
+
+systemImpl.dll: ./src/systemImpl.cpp ./src/systemImpl.h system.dll
+	g++ -Wall -g -c ./src/systemImpl.cpp -o ./bin/systemImpl.dll
 
 flow.dll: ./src/flow.h system.dll
 	g++ -Wall -g -c ./src/flow.h -o ./bin/flow.dll
 
 model.dll: ./src/model.h flow.dll system.dll
 	g++ -Wall -g -c ./src/model.h -o ./bin/model.dll
+
+# modelImpl.dll: ./src/modelImpl.h flow.dll system.dll model.dll
+# 	g++ -Wall -g -c ./src/modelImpl.h -o ./bin/modelImpl.dll
 
 funcional_tests.dll: ./test/funcional/funcional_tests.cpp ./test/funcional/funcional_tests.h model.dll flow.dll system.dll
 	g++ -Wall -g -c ./test/funcional/funcional_tests.cpp -o ./bin/funcional_tests.dll

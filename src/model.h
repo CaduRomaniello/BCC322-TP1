@@ -3,10 +3,11 @@
 
 #include <vector>
 #include <iostream>
-// #include <algorithm>
+#include <stdlib.h>
 #include <map>
 #include "./system.h"
 #include "./flow.h"
+#include <cstring>
 
 using namespace std;
 
@@ -29,78 +30,82 @@ class Model{
            \param flowsVector the vector of flow pointers, it prevents memory leak.      
         */ 
         Model (const Model& model){
-            cout << "Construtor de cópia"<< endl;
-            if (this == &model){
-                return;
-            }
-            // cout << "*==========================*"<< endl;
+            // if (this == &model){
+            //     return;
+            // }
+            // // cout << "*==========================*"<< endl;
 
-            for (System* item : systems){
-                delete(item);
-            }           
-            systems.clear();            
+            // for (System* item : systems){
+            //     delete(item);
+            // }           
+            // systems.clear();            
             
-            for (Flow* item : flows){
-                delete(item);
-            } 
-            flows.clear();
+            // for (Flow* item : flows){
+            //     delete(item);
+            // } 
+            // flows.clear();
 
-            name = model.getName();
-            time = model.getTime();   
+            // name = model.getName();
+            // time = model.getTime();   
             
-            for (System* item : model.systems){
-                System* copy = new System(*item);
-                add(copy);
-            }         
+            // for (System* item : model.systems){
+            //     System* copy = new System(*item);
+            //     add(copy);
+            // }         
             
-
-            for (Flow* item : model.flows){
-                int posSource = -1;
-                int posTarget = -1;
-                int count = 0;
-                // Flow* temp = dynamic_cast<Flow*>(item);
-                // T* copy = new T(*item);
-                // Flow* copy(*item);
-                // T* copy = new T(*item);
+            // int count = 0;
+            // cout <<"Comeca loop" <<endl;
+            // for (Flow* item : model.flows){
+            //     int posSource = -1;
+            //     int posTarget = -1;
+            //     size_t size = sizeof(*item);
                 
-                cout << "+==========================+"<< endl;
-                Flow* dynamic_cast_item = dynamic_cast<Flow*>(item);
-                Flow* copy;
-                *copy = *dynamic_cast_item;
-                cout << "*==========================*"<< endl;
+            //     // cout << "Cheguei" << endl;
+
+            //     Flow* temp = (Flow*) malloc(size);
+            //     // cout << "Oi" << endl;
+            //     *temp = *item;
+            //     // cout << "Tudo joia" << endl;
+            //     add(temp);
                 
-                // cout << *copy == *item << endl;
-                cout << copy << " " << item << endl;
+            //     // cout << "Imprimindo endereços de memória" << endl;
+            //     // cout << temp << " " << item << endl;
+            //     // cout << "Endereço impresso" << endl;
+            
+            //     cout <<"Começa loop interno" <<endl;
+            //     for (System* sys : model.systems){
+            //         if (item->getSource() == sys){
+            //             posSource = count;
+            //         }
+            //         if (item->getTarget() == sys){
+            //             posTarget = count;
+            //         }
+            //         if (posSource != -1 && posTarget != -1){
+            //             break;
+            //         }
 
-                for (System* sys : model.systems){
-                    if (item->getSource() == sys){
-                        posSource = count;
-                    }
-                    if (item->getTarget() == sys){
-                        posTarget = count;
-                    }
-                    if (posSource != -1 && posTarget != -1){
-                        break;
-                    }
+            //         count++;
+            //     } 
+            //     cout << "Terminei o loop interno" << endl;
 
-                    count++;
-                } 
+            //     if (posSource != -1){
+            //         temp->setSource(systems[posSource]);
+            //     }
+            //     else{
+            //         temp->setSource(NULL);
+            //     }
+            //     if (posTarget != -1){
+            //         temp->setTarget(systems[posTarget]);
+            //     }
+            //     else{
+            //         temp->setTarget(NULL);
+            //     }
 
-                if (posSource != -1){
-                    copy->setSource(systems[posSource]);
-                }
-                else{
-                    copy->setSource(NULL);
-                }
-                if (posTarget != -1){
-                    copy->setTarget(systems[posTarget]);
-                }
-                else{
-                    copy->setTarget(NULL);
-                }
+            //     // add(temp);
 
-                add(copy);
-            }
+            //     count++;
+            // }
+            // cout <<"Termina loop" <<endl;
             
         }
         
@@ -108,64 +113,64 @@ class Model{
             This is the overloaded assignment operator for the Model Class.
         */
         Model& operator=(const Model& model){
-            if (this == &model){
-                return *this;
-            }
+            // if (this == &model){
+            //     return *this;
+            // }
 
-            for (System* item : systems){
-                delete(item);
-            } 
-            systems.clear();
+            // for (System* item : systems){
+            //     delete(item);
+            // } 
+            // systems.clear();
            
-            for (Flow* item : flows){
-                delete(item);
-            } 
-            flows.clear();
+            // for (Flow* item : flows){
+            //     delete(item);
+            // } 
+            // flows.clear();
 
-            name = model.getName();
-            time = model.getTime();   
+            // name = model.getName();
+            // time = model.getTime();   
             
-            for (System* item : model.systems){
-                System* copy(item);
-                add(copy);
-            }         
+            // for (System* item : model.systems){
+            //     System* copy(item);
+            //     add(copy);
+            // }         
 
-            for (Flow* item : model.flows){
-                int posSource = -1;
-                int posTarget = -1;
-                int count = 0;
-                Flow* copy(item);
+            // for (Flow* item : model.flows){
+            //     int posSource = -1;
+            //     int posTarget = -1;
+            //     int count = 0;
+            //     Flow* copy(item);
 
-                for (System* sys : model.systems){
-                    if (item->getSource() == sys){
-                        posSource = count;
-                    }
-                    if (item->getTarget() == sys){
-                        posTarget = count;
-                    }
+            //     for (System* sys : model.systems){
+            //         if (item->getSource() == sys){
+            //             posSource = count;
+            //         }
+            //         if (item->getTarget() == sys){
+            //             posTarget = count;
+            //         }
 
-                    if (posSource != -1 && posTarget != -1){
-                        break;
-                    }
+            //         if (posSource != -1 && posTarget != -1){
+            //             break;
+            //         }
 
-                    count++;
-                } 
+            //         count++;
+            //     } 
 
-                if (posSource != -1){
-                    copy->setSource(systems[posSource]);
-                }
-                else{
-                    copy->setSource(NULL);
-                }
-                if (posTarget != -1){
-                    copy->setTarget(systems[posTarget]);
-                }
-                else{
-                    copy->setTarget(NULL);
-                }
+            //     if (posSource != -1){
+            //         copy->setSource(systems[posSource]);
+            //     }
+            //     else{
+            //         copy->setSource(NULL);
+            //     }
+            //     if (posTarget != -1){
+            //         copy->setTarget(systems[posTarget]);
+            //     }
+            //     else{
+            //         copy->setTarget(NULL);
+            //     }
 
-                add(copy);
-            }
+            //     add(copy);
+            // }
 
             return *this;
         }
@@ -210,6 +215,7 @@ class Model{
             \param increment represents the iteration step.
         */
         void execute(double start=0.0, double final=0.0, double increment=1.0){
+            // cout << "Cheguei no execute" << endl;
             
             vector<double> results;
             int count = 0;
@@ -223,20 +229,25 @@ class Model{
 
                 // Updates the system's values associated with each flow 'i' in the model
                 count = 0;
+                // cout << "Começa o loop interno do execute" << endl;
                 for (Flow* item : flows) {
-                    System* origin = item->getSource();
-                    origin->setValue(origin->getValue() - results[count]);
+                    // System* origin = item->getSource();
+                    item->getSource()->setValue(item->getSource()->getValue() - results[count]);
 
-                    System* destiny = item->getTarget();
-                    destiny->setValue(destiny->getValue() + results[count]);
+                    // System* destiny = item->getTarget();
+                    item->getTarget()->setValue(item->getTarget()->getValue() + results[count]);
 
                     count++;
                 }
+                // cout << "Termina o loop interno do execute" << endl;
+
 
                 // Resetting the results vector
+                // cout << "Começa loop de pop result" << endl;
                 for (auto i = beginFlows(); i != endFlows(); ++i){
                     results.pop_back();
                 }
+                // cout << "Termina loop de pop result" << endl;
 
                 time += increment;
             }
@@ -256,8 +267,9 @@ class Model{
            \param flow the flow to be added.
         */ 
         void add(Flow* flow){
+            // cout << "Inserindo flow* no vetor" << endl;
             flows.insert(endFlows(), flow);       
-           
+            // cout << "Consegui inserir flow* no vetor" << endl;
         }
         
         /*!        

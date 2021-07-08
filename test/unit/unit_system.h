@@ -1,14 +1,7 @@
 #ifndef UNIT_SYSTEM
 #define UNIT_SYSTEM
 
-#include <assert.h>
-#include <iostream>
-#include <string>
-#include <ios>
-#include <iostream>
-#include <fstream>
-
-#include "../../src/system.h"
+#include "../../src/systemImpl.h"
 #include "./utils/mem_usage.h"
 
 #define RESET "\033[0m"  /* Escape sequence to reset color output to default. */

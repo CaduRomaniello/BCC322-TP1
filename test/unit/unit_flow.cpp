@@ -18,8 +18,8 @@ void unit_flow_constructor() {
     cout << GREEN << "OK!" << RESET << endl;
     cout << "TEST 2 - Default constructor of the Flow class with passing parameters" << endl;
 
-    System* source = new System("Test System 1", 5.0);
-    System* target = new System("Test System 2", 10.0);
+    System* source = new SystemImpl("Test System 1", 5.0);
+    System* target = new SystemImpl("Test System 2", 10.0);
 
     ExponencialFlow* flow2 = new ExponencialFlow("Flow 2", source, target);
     
@@ -37,12 +37,14 @@ void unit_flow_constructor() {
 void UnitFlow::unit_flow_copy_constructor() { 
     cout << "TEST 3 - Copy constructor of the Flow class" << endl;
 
-    System* sys1 = new System("Sys 1", 5.0);
-    System* sys2 = new System("Sys 2", 6.0);
+    System* sys1 = new SystemImpl("Sys 1", 5.0);
+    System* sys2 = new SystemImpl("Sys 2", 6.0);
+
+    // ExponencialFlow* flow1 = new ExponencialFlow("Flow 1");
+    // ExponencialFlow* flow2 = new ExponencialFlow(*flow1);
 
     ExponencialFlow* flow1 = new ExponencialFlow("Flow 1");
-    // ExponencialFlow* flow2(dynamic_cast<Flow*>(flow1));
-    ExponencialFlow* flow2 = new ExponencialFlow(*flow1);
+    Flow* flow2 = new ExponencialFlow(*flow1); 
 
     flow1->setName("Original Flow 1");
     flow1->setSource(sys1);
@@ -110,7 +112,7 @@ void unit_flow_setName() {
 void unit_flow_getSource(){
     cout << "TEST 7 - Flow class's getSource() method" << endl;
     
-    System* system = new System("Test System");
+    System* system = new SystemImpl("Test System");
     ExponencialFlow* flow = new ExponencialFlow("Flow 1",system);
 
     // Making assertion to verify if the method returns the Flow class source system and if it's
@@ -124,7 +126,7 @@ void unit_flow_getSource(){
 void unit_flow_setSource(){
     cout << "TEST 8 - Flow class's setSource() method" << endl;
     
-    System* system = new System("Test System");
+    System* system = new SystemImpl("Test System");
     ExponencialFlow* flow1 = new ExponencialFlow("Flow 1");
     flow1->setSource(system);
 
@@ -138,7 +140,7 @@ void unit_flow_setSource(){
 void unit_flow_clearSource(){
     cout << "TEST 9 - Flow class's clearSource() method" << endl;
     
-    System* system = new System("Test System");
+    System* system = new SystemImpl("Test System");
     ExponencialFlow* flow1 = new ExponencialFlow("Flow 1",system);
     flow1->clearSource();
 
@@ -152,7 +154,7 @@ void unit_flow_clearSource(){
 void unit_flow_getTarget(){
     cout << "TEST 10 - Flow class's getTarget() method" << endl;
     
-    System* system = new System("Test System"); 
+    System* system = new SystemImpl("Test System"); 
     ExponencialFlow* flow = new ExponencialFlow("Flow 1",NULL,system);    
 
     // Making assertion to verify if the method returns the Flow class target system and if it's
@@ -166,7 +168,7 @@ void unit_flow_getTarget(){
 void unit_flow_setTarget(){
     cout << "TEST 11 - Flow class's setTarget() method" << endl;
     
-    System* system = new System("Test System");
+    System* system = new SystemImpl("Test System");
     ExponencialFlow* flow = new ExponencialFlow("Flow 1");
     flow->setTarget(system);
 
@@ -180,7 +182,7 @@ void unit_flow_setTarget(){
 void unit_flow_clearTarget(){
     cout << "TEST 12 - Flow class's clearTarget() method" << endl;
     
-    System* system = new System("Test System");
+    System* system = new SystemImpl("Test System");
     ExponencialFlow* flow = new ExponencialFlow("Flow", NULL, system); 
     flow->clearTarget();
 
@@ -194,11 +196,11 @@ void unit_flow_clearTarget(){
 void UnitFlow::unit_flow_assingmentOperator(){
     cout << "TEST 13 - Flow class assignment operator" << endl;
     
-    System* sys1 = new System("Sys 1", 5.0);
-    System* sys2 = new System("Sys 2", 6.0);
+    System* sys1 = new SystemImpl("Sys 1", 5.0);
+    System* sys2 = new SystemImpl("Sys 2", 6.0);
 
-    ExponencialFlow* flow1 = new ExponencialFlow("Flow 1");
-    ExponencialFlow* flow2 = new ExponencialFlow();
+    Flow* flow1 = new ExponencialFlow("Flow 1");
+    Flow* flow2 = new ExponencialFlow();
     *flow2 = *flow1;
     
     flow1->setName("Original Flow 1");
@@ -219,8 +221,8 @@ void UnitFlow::unit_flow_assingmentOperator(){
 void unit_flow_execute(){
     cout << "TEST 14 - Flow class's execute() method" << endl;
     
-    System* system1 = new System("Test System 1", 10.0);
-    System* system2 = new System("Test System 2", 0.0);
+    System* system1 = new SystemImpl("Test System 1", 10.0);
+    System* system2 = new SystemImpl("Test System 2", 0.0);
     ExponencialFlow* flow = new ExponencialFlow("Flow", system1, system2);
     system2->setValue(flow->execute());
     

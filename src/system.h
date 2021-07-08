@@ -1,7 +1,10 @@
 #ifndef SYSTEM_H
 #define SYSTEM_H
 
+#include <iostream>
 #include <string>
+#include <ios>
+#include <fstream>
 
 using namespace std;
 
@@ -11,49 +14,45 @@ using namespace std;
 */
 class System{
 
-    protected:
-        string name; /*!< This attribute contains a name for the system. */
-        double value; /*!< This attribute contains the actual value of the system. */
+    // protected:
+        // string name; /*!< This attribute contains a name for the system. */
+        // double value; /*!< This attribute contains the actual value of the system. */
 
-        /*!
-            This is the copy constructor for the System Class.
-            \param sys the system that is going to be cloned.
-        */
-        System (const System& sys){
-            if (this == &sys){
-                return;
-            }
+        // /*!
+        //     This is the copy constructor for the System Class.
+        //     \param sys the system that is going to be cloned.
+        // */
+        // System (const System& sys){
+        //     if (this == &sys){
+        //         return;
+        //     }
             
-            name = sys.getName();
-            value = sys.getValue();           
-        }
+        //     name = sys.getName();
+        //     value = sys.getValue();           
+        // }
 
-        /*!
-            This is the overloaded assignment operator for the System Class.
-        */
-        System& operator=(const System& sys){
-            if (this == &sys){
-                return *this;
-            }
+        // /*!
+        //     This is the overloaded assignment operator for the System Class.
+        // */
+        // System& operator=(const System& sys){
+        //     if (this == &sys){
+        //         return *this;
+        //     }
 
-            name = sys.getName();
-            value = sys.getValue();          
+        //     name = sys.getName();
+        //     value = sys.getValue();          
 
-            return *this;
-        }
+        //     return *this;
+        // }
 
     public:
-        friend class Flow; /*!< This Class represents a flow in the General Systems Theory implemented in this code. */
-        friend class Model; /*!< This Class represents a model in the General Systems Theory implemented in this code. */
-        friend class UnitSystem; /*!< This Class is used to test the copy constructor and assignment operator of the System class. */
-
         /*!
             This is the default constructor for the System Class.
             \param name the name of the System.
             \param value the initial value of the System.
             \return System - a System Class object.
         */
-        System(string name = "", double value = 0.0):name(name), value(value){}
+        // System();
 
         /*!
             This is the default destructor for the System Class.
@@ -72,132 +71,83 @@ class System{
             Sets the name attribute in the System Class.
             \param sysName which will be set to the current system.
         */
-        void setName(string sysName){
-            name = sysName;
-        }
+        virtual void setName(string sysName) = 0;
 
         /*!
             Returns the name attribute in the System Class.
             \return string - the content name attribute.  
         */
-        string getName() const {
-            return name;
-        }    
+        virtual string getName() const = 0;
         
         /*!
             Sets the value attribute in the System Class.
             \param sysValue which will be set to the current system.
         */
-        void setValue(double sysValue){
-            value = sysValue;
-        }
+        virtual void setValue(double sysValue) = 0;
+
         /*!
             Returns the value attribute in the System Class.
             \return double - the content value attribute.  
         */
-        double getValue() const{
-            return value;
-        }
+        virtual double getValue() const = 0;
       
         /*!
-            This is the overloaded "+" operator for the System Class.
+            This is the overloaded "+" operator for the System Class using two systems.
         */
-        double operator+(const System& sys){
-            if (this == &sys){
-                return 2.0 * value;
-            }
-
-            return value + sys.getValue();
-        }
-        
-        /*!
-            This is the overloaded "+" operator for the System Class.
-        */
-        friend double operator+(const double& valueSys, const System& sys){
-            return valueSys + sys.getValue();
-        }
-        
-        /*!
-            This is the overloaded "+" operator for the System Class.
-        */
-        friend double operator+(const System& sys, const double& valueSys){
-            return sys.getValue() + valueSys;
-        }
+        friend double operator+(const System& sys, const System& sys2);
 
         /*!
-            This is the overloaded "-" operator for the System Class.
+            This is the overloaded "+" operator for the SystemImpl Class using the order value + system.
         */
-        double operator-(const System& sys){
-            if (this == &sys){
-                return 0.0;
-            }
-
-            return value - sys.getValue();
-        }
-        
+        friend double operator+(const double& valueSys, const System& sys);
         /*!
-            This is the overloaded "-" operator for the System Class.
+            This is the overloaded "+" operator for the SystemImpl Class using the order system + value.
         */
-        friend double operator-(const System& sys, const double& valueSys){
-            return sys.getValue() - valueSys;
-        }
-        
-        /*!
-            This is the overloaded "-" operator for the System Class.
-        */
-        friend double operator-(const double& valueSys, const System& sys){
-            return valueSys - sys.getValue();
-        }
+        friend double operator+(const System& sys, const double& valueSys);
 
         /*!
-            This is the overloaded "*" operator for the System Class.
+            This is the overloaded "-" operator for the System Class using two systems.
         */
-        double operator*(const System& sys){
-            if (this == &sys){
-                return value * value;
-            }
-
-            return value * sys.getValue();
-        }
-        
-        /*!
-            This is the overloaded "*"" operator for the System Class.
-        */
-        friend double operator*(const System& sys, const double& valueSys){
-            return sys.getValue() * valueSys;
-        }
-        
-        /*!
-            This is the overloaded "*"" operator for the System Class.
-        */
-        friend double operator*(const double& valueSys, const System& sys){
-            return valueSys * sys.getValue();
-        }
+        friend double operator-(const System& sys, const System& sys2);
 
         /*!
-            This is the overloaded "/" operator for the System Class.
+            This is the overloaded "-" operator for the SystemImpl Class using the order value - system.
         */
-        double operator/(const System& sys){
-            if (this == &sys){
-                return 1.0;
-            }
+        friend double operator-(const double& valueSys, const System& sys);
+        /*!
+            This is the overloaded "-" operator for the SystemImpl Class using the order system - value.
+        */
+        friend double operator-(const System& sys, const double& valueSys);
 
-            return value / sys.getValue();
-        }
-        
         /*!
-            This is the overloaded "/" operator for the System Class.
+            This is the overloaded "*" operator for the System Class using two systems.
         */
-        friend double operator/(const double& valueSys, const System& sys){
-            return valueSys / sys.getValue();
-        }
-        
+        friend double operator*(const System& sys, const System& sys2);
+
         /*!
-            This is the overloaded "/" operator for the System Class.
+            This is the overloaded "*" operator for the System Class using the order value * system.
         */
-        friend double operator/(const System& sys, const double& valueSys){
-            return sys.getValue() / valueSys;
-        }    
+        friend double operator*(const double& valueSys, const System& sys);
+
+        /*!
+            This is the overloaded "*" operator for the System Class using the order system * value.
+        */
+        friend double operator*(const System& sys, const double& valueSys);
+
+        /*!
+            This is the overloaded "/" operator for the System Class using two systems.
+        */
+        friend double operator/(const System& sys, const System& sys2);
+
+        /*!
+            This is the overloaded "/" operator for the System Class the order value / system.
+        */
+        friend double operator/(const double& valueSys, const System& sys2);
+
+        /*!
+            This is the overloaded "/" operator for the System Class the order system / value.
+        */
+        friend double operator/(const System& sys, const double& valueSys);
 
 };
 

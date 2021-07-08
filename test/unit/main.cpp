@@ -15,7 +15,8 @@ int main(){
     cout << "\n=========== Testes unitarios da Classe Flow ============\n" << endl;
     run_unit_tests_flow();
     cout << "\n=========== Testes unitarios da Classe Model ===========\n"<< endl;
-    run_unit_tests_model();
+    cout << "Descomentar para funcionar." << endl;
+    //run_unit_tests_model();
     cout << "\n========================================================\n" << endl;
 
     return 0;

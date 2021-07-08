@@ -1,10 +1,6 @@
-#include <iostream>
 #include <assert.h>
 
 #include "funcional_tests.h" 
-#include "../../src/system.h"
-#include "../../src/flow.h"
-#include "../../src/model.h"
 
 using namespace std;
 
@@ -13,8 +9,8 @@ void exponentialFuncionalTest(){
     cout << "TEST 1 - Simple model with exponential equation" << endl;
 
     //Creates elements of the model
-    System* pop1 = new System("Population 1", 100);
-    System* pop2 = new System("Population 2", 0);
+    System* pop1 = new SystemImpl("Population 1", 100);
+    System* pop2 = new SystemImpl("Population 2", 0);
     ExponencialFlow* expFlow = new ExponencialFlow("Unlimited Growth", pop1, pop2);
     Model* expModel = new Model("Exponential Model", 0.0);
     
@@ -50,8 +46,8 @@ void logisticalFuncionalTest(){
     cout << "TEST 2 - Simple model with logistic equation" << endl;
     
     //Creates elements of the model
-    System* p1 = new System("Population 1", 100);
-    System* p2 = new System("Population 2", 10);
+    System* p1 = new SystemImpl("Population 1", 100);
+    System* p2 = new SystemImpl("Population 2", 10);
     LogisticFlow* logFlow = new LogisticFlow("Limited Growth", p1, p2);
     Model* logModel = new Model("Logistic Model", 0.0);
     
@@ -87,11 +83,11 @@ void complexFuncionalTest(){
     cout << "TEST 3 - Complex model" << endl;
     
     //Creates elements of the model
-    System* q1 = new System("Q1", 100);
-    System* q2 = new System("Q2", 0);
-    System* q3 = new System("Q3", 100);
-    System* q4 = new System("Q4", 0);
-    System* q5 = new System("Q5", 0);
+    System* q1 = new SystemImpl("Q1", 100);
+    System* q2 = new SystemImpl("Q2", 0);
+    System* q3 = new SystemImpl("Q3", 100);
+    System* q4 = new SystemImpl("Q4", 0);
+    System* q5 = new SystemImpl("Q5", 0);
     ComplexFlowF* comFlowF = new ComplexFlowF("Flow f", q1, q2);
     ComplexFlowT* comFlowT = new ComplexFlowT("Flow t", q2, q3);
     ComplexFlowU* comFlowU = new ComplexFlowU("Flow u", q3, q4);
