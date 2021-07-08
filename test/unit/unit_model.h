@@ -8,7 +8,7 @@
 
 #include "../../src/modelImpl.h" 
 #include "../../src/systemImpl.h"
-#include "../../src/flow.h"
+#include "../../src/flowImpl.h"
 #include "../../src/model.h"
 #include "./unit_flow.h"
 
@@ -19,21 +19,7 @@
 /**
 * Creation of the unit tests for the Model class.
 */
-class UnitModel{
-    public:
-        UnitModel(){}
-        ~UnitModel(){}
-        
-        /*!
-          Function prototype for the Model class' copy constructor unit test.
-        */
-        void unit_model_copy_constructor();
 
-        /*!
-          Function prototype for the Model class' assingment operator unit test.
-        */
-        void unit_model_assingmentOperator();
-};
 /*!
   Function prototype for the Model class' constructor unit test.
 */

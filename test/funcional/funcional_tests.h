@@ -1,6 +1,7 @@
 #ifndef FUNCTIONAL_TEST
 #define FUNCTIONAL_TEST
 
+#include "../../src/flowImpl.h"
 #include "../../src/systemImpl.h"
 #include "../../src/flow.h"
 #include "../../src/modelImpl.h"
@@ -32,7 +33,7 @@ void complexFuncionalTest();
 /**
 * This Class represents a flow with limitless growth, and is used in the Exponencial Model test.
 */
-class ExponencialFlow : public Flow{
+class ExponencialFlow : public FlowImpl{
     public:
         /*!
             This is a more elaborated constructor for the ExponencialFlow Class.
@@ -40,7 +41,7 @@ class ExponencialFlow : public Flow{
             \param source a pointer to the source system of the ExponencialFlow Class.
             \param target a pointer to the target system of the ExponencialFlow Class.
         */
-        ExponencialFlow(string name, System* source, System* target): Flow(name, source, target){}
+        ExponencialFlow(string name, System* source, System* target): FlowImpl(name, source, target){}
 
         /*!
             A method created by the user, that contains an equation that will be executed by the exponencial model.                        
@@ -54,7 +55,7 @@ class ExponencialFlow : public Flow{
 /**
 * This Class represents a flow with limited growth, and is used in the Logistic Model test.
 */
-class LogisticFlow : public Flow{
+class LogisticFlow : public FlowImpl{
     public:
         /*!
             This is a more elaborated constructor for the LogisticFlow Class.
@@ -62,7 +63,7 @@ class LogisticFlow : public Flow{
             \param source a pointer to the source system of the LogisticFlow Class.
             \param target a pointer to the target system of the LogisticFlow Class.
         */
-        LogisticFlow(string name, System* source, System* target): Flow(name, source, target){}
+        LogisticFlow(string name, System* source, System* target): FlowImpl(name, source, target){}
 
         /*!
             A method created by the user, that contains an equation that will be executed by the logistic model.                        
@@ -76,7 +77,7 @@ class LogisticFlow : public Flow{
 /**
 * This Class represents a flow with limitless growth, and is used in the Complex Model test.
 */
-class ComplexFlowF : public Flow{
+class ComplexFlowF : public FlowImpl{
     public:
         /*!
             This is a more elaborated constructor for the ComplexFlowF Class.
@@ -84,7 +85,7 @@ class ComplexFlowF : public Flow{
             \param source a pointer to the source system of the ComplexFlowF Class.
             \param target a pointer to the target system of the ComplexFlowF Class.
         */
-        ComplexFlowF(string name, System* source, System* target): Flow(name, source, target){}
+        ComplexFlowF(string name, System* source, System* target): FlowImpl(name, source, target){}
 
         /*!
             A method created by the user, that contains an equation that will be executed by the complex model.                        
@@ -98,7 +99,7 @@ class ComplexFlowF : public Flow{
 /**
 *  This Class represents a flow with limitless growth, and is used in the Complex Model test.
 */
-class ComplexFlowT : public Flow{
+class ComplexFlowT : public FlowImpl{
     public:
         /*!
             This is a more elaborated constructor for the ComplexFlowT Class.
@@ -106,7 +107,7 @@ class ComplexFlowT : public Flow{
             \param source a pointer to the source system of the ComplexFlowT Class.
             \param target a pointer to the target system of the ComplexFlowT Class.
         */
-        ComplexFlowT(string name, System* source, System* target): Flow(name, source, target){}
+        ComplexFlowT(string name, System* source, System* target): FlowImpl(name, source, target){}
 
         /*!
             A method created by the user, that contains an equation that will be executed by the complex model.                        
@@ -120,7 +121,7 @@ class ComplexFlowT : public Flow{
 /**
 * This Class represents a flow with limitless growth, and is used in the Complex Model test.
 */
-class ComplexFlowU : public Flow{
+class ComplexFlowU : public FlowImpl{
     public:
         /*!
             This is a more elaborated constructor for the ComplexFlowU Class.
@@ -128,7 +129,7 @@ class ComplexFlowU : public Flow{
             \param source a pointer to the source system of the ComplexFlowU Class.
             \param target a pointer to the target system of the ComplexFlowU Class.
         */
-        ComplexFlowU(string name, System* source, System* target): Flow(name, source, target){}
+        ComplexFlowU(string name, System* source, System* target): FlowImpl(name, source, target){}
         
         /*!
             A method created by the user, that contains an equation that will be executed by the complex model.                        
@@ -142,7 +143,7 @@ class ComplexFlowU : public Flow{
 /**
 * This Class represents a flow with limitless growth, and is used in the Complex Model test.
 */
-class ComplexFlowV : public Flow{
+class ComplexFlowV : public FlowImpl{
     public:
         /*!
             This is a more elaborated constructor for the ComplexFlowV Class.
@@ -150,7 +151,7 @@ class ComplexFlowV : public Flow{
             \param source a pointer to the source system of the ComplexFlowV Class.
             \param target a pointer to the target system of the ComplexFlowV Class.
         */
-        ComplexFlowV(string name, System* source, System* target): Flow(name, source, target){}
+        ComplexFlowV(string name, System* source, System* target): FlowImpl(name, source, target){}
 
         /*!
             A method created by the user, that contains an equation that will be executed by the complex model.                        
@@ -164,7 +165,7 @@ class ComplexFlowV : public Flow{
 /**
 * This Class represents a flow with limitless growth, and is used in the Complex Model test.
 */
-class ComplexFlowG : public Flow{
+class ComplexFlowG : public FlowImpl{
     public:
         /*!
             This is a more elaborated constructor for the ComplexFlowG Class.
@@ -172,7 +173,7 @@ class ComplexFlowG : public Flow{
             \param source a pointer to the source system of the ComplexFlowG Class.
             \param target a pointer to the target system of the ComplexFlowG Class.
         */
-        ComplexFlowG(string name, System* source, System* target): Flow(name, source, target){}
+        ComplexFlowG(string name, System* source, System* target): FlowImpl(name, source, target){}
 
         /*!
             A method created by the user, that contains an equation that will be executed by the complex model.                        
@@ -186,7 +187,7 @@ class ComplexFlowG : public Flow{
 /**
 * This Class represents a flow with limitless growth, and is used in the Complex Model test.
 */       
-class ComplexFlowR: public Flow{
+class ComplexFlowR: public FlowImpl{
     public:
         /*!
             This is a more elaborated constructor for the ComplexFlowR Class.
@@ -194,7 +195,7 @@ class ComplexFlowR: public Flow{
             \param source a pointer to the source system of the ComplexFlowR Class.
             \param target a pointer to the target system of the ComplexFlowR Class.
         */
-        ComplexFlowR(string name, System* source, System* target): Flow(name, source, target){}
+        ComplexFlowR(string name, System* source, System* target): FlowImpl(name, source, target){}
 
         /*!
             A method created by the user, that contains an equation that will be executed by the complex model.                        

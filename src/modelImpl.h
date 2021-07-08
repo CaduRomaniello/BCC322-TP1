@@ -2,7 +2,7 @@
 #define MODELIMPL_H
 
 #include "./model.h"
-#include "./systemImpl.h"
+#include "./system.h"
 
 using namespace std;
 
@@ -18,20 +18,8 @@ class ModelImpl : public Model{
         vector<System*> systems; /*!< This attribute stores pointers to the systems contained in the model. */
         vector<Flow*> flows; /*!< This attribute stores pointers to the flows contained in the model. */       
 
-        /*!
-            This is the copy constructor for the ModelImpl Class.
-            \param model the ModelImpl that is going to be cloned.
-        */
-        ModelImpl (const ModelImpl& model);
-        
-        /*!
-            This is the overloaded assignment operator for the ModelImpl Class.
-        */
-        ModelImpl& operator=(const ModelImpl& model);
 
-    public:
-        friend class UnitModel; /*!< This Class is used to test the copy constructor and assignment operator of the Model class. */
-             
+    public:             
         typedef vector<System *>::iterator systemIterator;
         typedef vector<Flow *>::iterator flowIterator;
 
@@ -126,6 +114,18 @@ class ModelImpl : public Model{
             \return Flow* - a flow in the index-th position of the systems attribute.
         */
         Flow* getFlow(int index);
+
+    private:
+        /*!
+            This is the copy constructor for the ModelImpl Class.
+            \param model the ModelImpl that is going to be cloned.
+        */
+        ModelImpl (const ModelImpl& model);
+        
+        /*!
+            This is the overloaded assignment operator for the ModelImpl Class.
+        */
+        void operator=(const ModelImpl& model);
 
 };
 

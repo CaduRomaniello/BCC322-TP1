@@ -44,64 +44,53 @@ class System{
         */
         virtual double getValue() const = 0;
       
+      
         /*!
-            This is the overloaded "+" operator for the System Class using two systems.
+            This is the overloaded "+" operator for the System Class.
         */
-        friend double operator+(const System& sys, const System& sys2);
+        double operator+(const System& sys);
+        
+        /*!
+            This is the overloaded "+" operator for the System Class.
+        */
+        double operator+(const double& valueSys);
 
         /*!
-            This is the overloaded "+" operator for the SystemImpl Class using the order value + system.
+            This is the overloaded "-" operator for the System Class.
         */
-        friend double operator+(const double& valueSys, const System& sys);
+        double operator-(const System& sys);
+        
         /*!
-            This is the overloaded "+" operator for the SystemImpl Class using the order system + value.
+            This is the overloaded "-" operator for the System Class.
         */
-        friend double operator+(const System& sys, const double& valueSys);
+        double operator-(const double& valueSys);
 
         /*!
-            This is the overloaded "-" operator for the System Class using two systems.
+            This is the overloaded "*" operator for the System Class.
         */
-        friend double operator-(const System& sys, const System& sys2);
+        double operator*(const System& sys);
+        
+        /*!
+            This is the overloaded "*"" operator for the System Class.
+        */
+        double operator*(const double& valueSys);
 
         /*!
-            This is the overloaded "-" operator for the SystemImpl Class using the order value - system.
+            This is the overloaded "/" operator for the System Class.
         */
-        friend double operator-(const double& valueSys, const System& sys);
+        double operator/(const System& sys);
+        
         /*!
-            This is the overloaded "-" operator for the SystemImpl Class using the order system - value.
+            This is the overloaded "/" operator for the System Class.
         */
-        friend double operator-(const System& sys, const double& valueSys);
-
-        /*!
-            This is the overloaded "*" operator for the System Class using two systems.
-        */
-        friend double operator*(const System& sys, const System& sys2);
-
-        /*!
-            This is the overloaded "*" operator for the System Class using the order value * system.
-        */
-        friend double operator*(const double& valueSys, const System& sys);
-
-        /*!
-            This is the overloaded "*" operator for the System Class using the order system * value.
-        */
-        friend double operator*(const System& sys, const double& valueSys);
-
-        /*!
-            This is the overloaded "/" operator for the System Class using two systems.
-        */
-        friend double operator/(const System& sys, const System& sys2);
-
-        /*!
-            This is the overloaded "/" operator for the System Class the order value / system.
-        */
-        friend double operator/(const double& valueSys, const System& sys2);
-
-        /*!
-            This is the overloaded "/" operator for the System Class the order system / value.
-        */
-        friend double operator/(const System& sys, const double& valueSys);
+        double operator/(const double& valueSys);
 
 };
+
+
+double operator+(const double& valueSys, const System& sys);
+double operator-(const double& valueSys, const System& sys);
+double operator*(const double& valueSys, const System& sys);
+double operator/(const double& valueSys, const System& sys);
 
 #endif
