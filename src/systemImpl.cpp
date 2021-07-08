@@ -42,68 +42,67 @@ double SystemImpl::getValue() const{
     return value;
 }
 
-
-double operator+(const SystemImpl& sys, const SystemImpl& sys2){
-    if (&sys == &sys2){
-        return 2.0 * sys.getValue();
+double SystemImpl::operator+(const SystemImpl& sys){
+    if (this == &sys){
+        return 2.0 * getValue();
     }
 
-    return sys.getValue() + sys2.getValue();
+    return getValue() + sys.getValue();
 }
+
+double SystemImpl::operator+(const double& valueSys){
+    return valueSys + getValue();
+}
+
 
 double operator+(const double& valueSys, const SystemImpl& sys){
-    return valueSys + sys.getValue();
-}
-
-
-double operator+(const SystemImpl& sys, const double& valueSys){
     return sys.getValue() + valueSys;
 }
 
-double operator-(const SystemImpl& sys, const SystemImpl& sys2){
-    if (&sys == &sys2){
+double  SystemImpl::operator-(const SystemImpl& sys){
+    if (this == &sys){
         return 0.0;
     }
 
-    return sys.getValue() - sys2.getValue();
+    return getValue() - sys.getValue();
 }
 
-double operator-(const SystemImpl& sys, const double& valueSys){
-    return sys.getValue() - valueSys;
+double SystemImpl::operator-(const double& valueSys){
+    return getValue() - valueSys;
 }
 
 double operator-(const double& valueSys, const SystemImpl& sys){
     return valueSys - sys.getValue();
 }
 
-double operator*(const SystemImpl& sys, const SystemImpl& sys2){
-    if (&sys == &sys2){
-        return sys.getValue() * sys.getValue();
+double SystemImpl::operator*(const SystemImpl& sys){
+    if (this == &sys){
+        return getValue() * sys.getValue();
     }
 
-    return sys.getValue() * sys2.getValue();
+    return getValue() * sys.getValue();
 }
 
-double operator*(const SystemImpl& sys, const double& valueSys){
-    return sys.getValue() * valueSys;
+double SystemImpl::operator*(const double& valueSys){
+    return getValue() * valueSys;
 }
 
 double operator*(const double& valueSys, const SystemImpl& sys){
     return valueSys * sys.getValue();
 }
 
-double operator/(const SystemImpl& sys, const SystemImpl& sys2){
-    if (&sys == &sys2){
+double SystemImpl::operator/(const SystemImpl& sys){
+    if (this == &sys){
         return 1.0;
     }
 
-    return sys.getValue() / sys2.getValue();
+    return getValue() / sys.getValue();
+}
+
+double SystemImpl::operator/(const double& valueSys){
+    return getValue() / valueSys;
 }
 
 double operator/(const double& valueSys, const SystemImpl& sys){
     return valueSys / sys.getValue();
-}
-
-double operator/(const SystemImpl& sys, const double& valueSys){
-    return sys.getValue() / valueSys;
 }

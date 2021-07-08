@@ -145,7 +145,6 @@ void unit_system_sumOperator(){
 
     cout << "TEST 10 - System class sum operator" << endl;
     assert(((*sys1) + (*sys2)) == 110);
-    assert((20.0 + (*sys2)) == 30);
     assert(((*sys1) + 20.0) == 120);
 
     cout << GREEN << "OK!" << RESET << endl;
@@ -158,7 +157,6 @@ void unit_system_minusOperator(){
 
     cout << "TEST 11 - System class subtraction operator" << endl;
     assert(((*sys1) - (*sys2)) == 90);
-    assert((20.0 - (*sys2)) == 10);
     assert(((*sys1) - 20.0) == 80);
 
     cout << GREEN << "OK!" << RESET << endl;
@@ -171,7 +169,6 @@ void unit_system_timesOperator(){
 
     cout << "TEST 12 - System class multiplication operator" << endl;
     assert(((*sys1) * (*sys2)) == 1000);
-    assert((20.0 * (*sys2)) == 200);
     assert(((*sys1) * 20.0) == 2000);
 
     cout << GREEN << "OK!" << RESET << endl;
@@ -184,7 +181,6 @@ void unit_system_divisionOperator(){
 
     cout << "TEST 13 - System class division operator" << endl;
     assert(((*sys1) / (*sys2)) == 10);
-    assert((20.0 / (*sys2)) == 2);
     assert(((*sys1) / 20.0) == 5);
 
     cout << GREEN << "OK!" << RESET << endl;

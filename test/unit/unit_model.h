@@ -6,8 +6,8 @@
 #include <string>
 #include <vector>
 
+#include "../../src/modelImpl.h" 
 #include "../../src/systemImpl.h"
-#include "../../src/system.h"
 #include "../../src/flow.h"
 #include "../../src/model.h"
 #include "./unit_flow.h"

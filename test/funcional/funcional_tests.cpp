@@ -12,7 +12,7 @@ void exponentialFuncionalTest(){
     System* pop1 = new SystemImpl("Population 1", 100);
     System* pop2 = new SystemImpl("Population 2", 0);
     ExponencialFlow* expFlow = new ExponencialFlow("Unlimited Growth", pop1, pop2);
-    Model* expModel = new Model("Exponential Model", 0.0);
+    Model* expModel = new ModelImpl("Exponential Model", 0.0);
     
     //Building the model
     expModel->add(pop1);
@@ -49,7 +49,7 @@ void logisticalFuncionalTest(){
     System* p1 = new SystemImpl("Population 1", 100);
     System* p2 = new SystemImpl("Population 2", 10);
     LogisticFlow* logFlow = new LogisticFlow("Limited Growth", p1, p2);
-    Model* logModel = new Model("Logistic Model", 0.0);
+    Model* logModel = new ModelImpl("Logistic Model", 0.0);
     
     //Building the model
     logModel->add(p1);
@@ -94,7 +94,7 @@ void complexFuncionalTest(){
     ComplexFlowV* comFlowV = new ComplexFlowV("Flow v", q4, q1);
     ComplexFlowG* comFlowG = new ComplexFlowG("Flow g", q1, q3);
     ComplexFlowR* comFlowR = new ComplexFlowR("Flow r", q2, q5);
-    Model* comModel = new Model("Complex Model", 0.0);
+    Model* comModel = new ModelImpl("Complex Model", 0.0);
     
     //Building the model
     comModel->add(q1);
