@@ -8,7 +8,7 @@
 
 using namespace std;
 
-//! Class Flow
+//! Class FlowImpl
 /**
 * This Class represents a flow in the General Systems Theory implemented in this code.
 */
@@ -32,7 +32,7 @@ class FlowImpl : public Flow{
 
     public:
         friend class Model; /*!< This Class represents a model in the General Systems Theory implemented in this code. */
-        friend class ModelImpl; /*!< This Class represents a model in the General Systems Theory implemented in this code. */
+        friend class ModelImpl; /*!< This Class represents the implementation of a model in the General Systems Theory implemented in this code. */
         friend class UnitFlow; /*!< This Class is used to test the copy constructor and assignment operator of the FlowImpl class. */
 
         /*!

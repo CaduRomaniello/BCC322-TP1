@@ -1,16 +1,7 @@
 #include "./modelImpl.h"      
 
-/*!        
-    This is the copy constructor for the Model Class.
-    \param model the model that is going to be cloned.
-    \param systems the vector of system pointers, it prevents memory leak.
-    \param flows the vector of flow pointers, it prevents memory leak.      
-*/ 
 ModelImpl::ModelImpl (const ModelImpl& model){}
 
-/*!
-    This is the overloaded assignment operator for the Model Class.
-*/
 void ModelImpl::operator=(const ModelImpl& model){}
 
 ModelImpl::systemIterator ModelImpl::beginSystems( void ){return systems.begin();}
