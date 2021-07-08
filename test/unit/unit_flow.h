@@ -54,7 +54,12 @@ class ExponencialFlow : public FlowImpl{
             A method created by the user, that contains an equation that will be executed by the exponencial model.                        
         */
         double execute(){
-            return (0.01 * getSource()->getValue());
+            if (getSource() != NULL){
+                return (0.01 * getSource()->getValue());
+            }
+            else{
+                return 0;
+            }
         }
 };
 

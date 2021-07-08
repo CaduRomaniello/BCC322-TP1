@@ -39,8 +39,13 @@ void ModelImpl::execute(double start, double final, double increment){
         // Updates the system's values associated with each flow 'i' in the model
         count = 0;
         for (Flow* item : flows) {
-            item->getSource()->setValue(item->getSource()->getValue() - results[count]);
-            item->getTarget()->setValue(item->getTarget()->getValue() + results[count]);
+            if (item->getSource() != NULL){
+                item->getSource()->setValue(item->getSource()->getValue() - results[count]);
+            }
+
+            if (item->getTarget() != NULL){
+                item->getTarget()->setValue(item->getTarget()->getValue() + results[count]);
+            }
 
             count++;
         }

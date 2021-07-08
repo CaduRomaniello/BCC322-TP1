@@ -47,7 +47,12 @@ class ExponencialFlow : public FlowImpl{
             A method created by the user, that contains an equation that will be executed by the exponencial model.                        
         */
         double execute(){
-            return 0.01 * getSource()->getValue();
+            if (getSource() != NULL){
+                return (0.01 * getSource()->getValue());
+            }
+            else{
+                return 0;
+            }
         }
 };
 
@@ -69,7 +74,12 @@ class LogisticFlow : public FlowImpl{
             A method created by the user, that contains an equation that will be executed by the logistic model.                        
         */
         double execute(){
-            return 0.01 * getTarget()->getValue() * (1 - getTarget()->getValue() / 70);
+            if (getTarget() != NULL){
+                return 0.01 * getTarget()->getValue() * (1 - getTarget()->getValue() / 70);
+            }
+            else{
+                return 0;
+            }
         }
 };
 
@@ -91,7 +101,12 @@ class ComplexFlowF : public FlowImpl{
             A method created by the user, that contains an equation that will be executed by the complex model.                        
         */
         double execute(){
-            return 0.01 * getSource()->getValue();
+            if (getSource() != NULL){
+                return 0.01 * getSource()->getValue();
+            }
+            else{
+                return 0;
+            }
         }
 };
 
@@ -113,7 +128,12 @@ class ComplexFlowT : public FlowImpl{
             A method created by the user, that contains an equation that will be executed by the complex model.                        
         */
         double execute(){
-            return 0.01 * getSource()->getValue();
+            if (getSource() != NULL){
+                return 0.01 * getSource()->getValue();
+            }
+            else{
+                return 0;
+            }
         }
 };
 
@@ -135,7 +155,12 @@ class ComplexFlowU : public FlowImpl{
             A method created by the user, that contains an equation that will be executed by the complex model.                        
         */
         double execute(){
-            return 0.01 * getSource()->getValue();
+            if (getSource() != NULL){
+                return 0.01 * getSource()->getValue();
+            }
+            else{
+                return 0;
+            }
         }
 };
 
@@ -157,7 +182,12 @@ class ComplexFlowV : public FlowImpl{
             A method created by the user, that contains an equation that will be executed by the complex model.                        
         */
         double execute(){
-            return 0.01 * getSource()->getValue();
+            if (getSource() != NULL){
+                return 0.01 * getSource()->getValue();
+            }
+            else{
+                return 0;
+            }
         }
 };
 
@@ -179,7 +209,12 @@ class ComplexFlowG : public FlowImpl{
             A method created by the user, that contains an equation that will be executed by the complex model.                        
         */
         double execute(){
-            return 0.01 * getSource()->getValue();
+            if (getSource() != NULL){
+                return 0.01 * getSource()->getValue();
+            }
+            else{
+                return 0;
+            }
         }
 };
 
@@ -201,7 +236,12 @@ class ComplexFlowR: public FlowImpl{
             A method created by the user, that contains an equation that will be executed by the complex model.                        
         */
         double execute(){
-            return 0.01 * getSource()->getValue();
+            if (getSource() != NULL){
+                return 0.01 * getSource()->getValue();
+            }
+            else{
+                return 0;
+            }
         }
 };
 
