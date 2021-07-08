@@ -6,12 +6,13 @@
 #include <string>
 
 #include "../../src/systemImpl.h"
+#include "../../src/flowImpl.h"
 #include "../../src/system.h"
-#include "../../src/flow.h"
 #include "./utils/mem_usage.h"
 
 #define RESET "\033[0m"  /* Escape sequence to reset color output to default. */
 #define GREEN "\033[32m" /* Escape sequence to a green color output. */
+using namespace std;
 
 //! Unit tests 
 /**
@@ -39,7 +40,7 @@ class UnitFlow{
 /**
 * This Class represents a flow with limitless growth, and is used in the Exponencial Model test.
 */
-class ExponencialFlow : public Flow{
+class ExponencialFlow : public FlowImpl{
     public:
         /*!
             This is a more elaborated constructor for the ExponencialFlow Class.
@@ -47,12 +48,12 @@ class ExponencialFlow : public Flow{
             \param source a pointer to the source system of the ExponencialFlow Class.
             \param target a pointer to the target system of the ExponencialFlow Class.
         */
-        ExponencialFlow(string name = "", System* source = NULL, System* target = NULL): Flow(name, source, target){}
+        ExponencialFlow(string name = "", System* source = NULL, System* target = NULL): FlowImpl(name, source, target){}
         
         /*!
             A method created by the user, that contains an equation that will be executed by the exponencial model.                        
         */
-        virtual double execute(){
+        double execute(){
             return (0.01 * getSource()->getValue());
         }
 };

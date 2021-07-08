@@ -7,7 +7,7 @@
 #include <map>
 #include <cstring>
 
-#include "./systemImpl.h"
+#include "./system.h"
 #include "./flow.h"
 
 using namespace std;
@@ -18,9 +18,7 @@ using namespace std;
 */
 class Model{
 
-    public:
-        friend class UnitModel; /*!< This Class is used to test the copy constructor and assignment operator of the Model class. */
-        
+    public:        
         typedef vector<System*>::iterator systemIterator;
         typedef vector<Flow*>::iterator flowIterator;
         

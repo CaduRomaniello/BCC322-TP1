@@ -1,7 +1,5 @@
 #include "unit_flow.h"
 
-using namespace std;
-
 // Function for flow's constructor unit test.
 void unit_flow_constructor() {
     cout << "TEST 1 - Default constructor of the Flow class without passing parameters" << endl;
@@ -196,14 +194,14 @@ void UnitFlow::unit_flow_assingmentOperator(){
     System* sys1 = new SystemImpl("Sys 1", 5.0);
     System* sys2 = new SystemImpl("Sys 2", 6.0);
 
-    Flow* flow1 = new ExponencialFlow("Flow 1");
-    Flow* flow2 = new ExponencialFlow();
+    ExponencialFlow* flow1 = new ExponencialFlow("Flow 1");
+    ExponencialFlow* flow2 = new ExponencialFlow();
     *flow2 = *flow1;
     
     flow1->setName("Original Flow 1");
     flow1->setSource(sys1);
     flow1->setTarget(sys2);
-    
+        
     // Making assertion to verify if the name property was assigned.
     assert(flow2->getName() == "Flow 1");
     // Making assertion to verify if the source system property was assigned.

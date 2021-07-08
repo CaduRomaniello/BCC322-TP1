@@ -13,53 +13,10 @@ using namespace std;
 */
 class Flow{
 
-    protected:
-        string name; /*!< This attribute contains a name for the flow. */
-        System* source; /*!< This attribute stores a pointer to the source system of a flow. */
-        System* target; /*!< This attribute stores a pointer to the target system of a flow. */
-
-        /*!
-            This is the copy constructor for the Flow Class.
-            \param flow the flow that is going to be cloned.
-        */
-        Flow (const Flow& flow){
-            if (this == &flow){
-                return;
-            }
-            
-            name = flow.getName();
-            source = NULL;
-            target = NULL;
-        }
-
-        /*!
-            This is the overloaded assignment operator for the Flow Class.
-        */
-        Flow& operator=(const Flow& flow){
-            if (this == &flow){
-                return *this;
-            }
-
-            setName(flow.getName());
-            setSource(NULL);
-            setTarget(NULL);
-
-            return *this;
-        }
-
     public:
         friend class Model; /*!< This Class represents a model in the General Systems Theory implemented in this code. */
         friend class ModelImpl; /*!< This Class represents a model in the General Systems Theory implemented in this code. */
         friend class UnitFlow; /*!< This Class is used to test the copy constructor and assignment operator of the Flow class. */
-
-        /*!
-            This is the default constructor for the Flow Class.
-            \param name the name of the Flow.
-            \param source a pointer to the source system of the Flow.
-            \param target a pointer to the target system of the Flow.
-            \return Flow - a Flow Class object, with it's isCopy attribute set to false.
-        */
-        Flow(string name = "", System* source = NULL, System* target = NULL):name(name), source(source), target(target){}
         
         /*!
             This is the default destructor for the Flow Class.
@@ -76,63 +33,47 @@ class Flow{
             Returns the name attribute in the Flow Class.
             \return string - the content name attribute.  
         */
-        string getName() const{
-            return name;
-        }
+        virtual string getName() const = 0;
                 
         /*!
             Sets the name attribute in the Flow Class.
             \param flowName which will be set to the current flow.
         */
-        void setName(string flowName){
-            name = flowName;
-        }
+        virtual void setName(string flowName) = 0;
 
         /*!
             Returns the source attribute in the Flow Class.  
             \return System* - the pointer of the source system. 
         */
-        System* getSource() const{
-            return source;
-        }
+        virtual System* getSource() const = 0;
 
         /*!
             Sets the source attribute in the Flow Class. 
             \param sourceSys a pointer to the source target.
         */
-        void setSource(System* sourceSys){
-            source = sourceSys;
-        }
+        virtual void setSource(System* sourceSys) = 0;
 
         /*!
             Sets the pointer of the source attribute as NULL.
         */
-        void clearSource() {
-            source = NULL;
-        }
+        virtual void clearSource() = 0;
 
         /*!
             Returns the target attribute in the Flow Class. 
             \return System* - the pointer of the target system. 
         */
-        System* getTarget() const{
-            return target;
-        }
+        virtual System* getTarget() const = 0;
         
         /*!
             Sets the target attribute in the Flow Class.   
             \param targetSys a pointer to the target system.
         */
-        void setTarget(System* targetSys) {
-            target = targetSys;
-        }
+        virtual void setTarget(System* targetSys) = 0;
 
         /*!
             Sets the pointer of the target attribute as NULL.
         */
-        void clearTarget() {
-            target = NULL;
-        }
+        virtual void clearTarget() = 0;
 };
 
 #endif
