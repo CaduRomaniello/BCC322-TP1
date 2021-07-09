@@ -42,7 +42,7 @@ double SystemImpl::getValue() const{
     return value;
 }
 
-double SystemImpl::operator+(const SystemImpl& sys){
+double SystemImpl::operator+(const System& sys){
     if (this == &sys){
         return 2.0 * getValue();
     }
@@ -59,7 +59,7 @@ double operator+(const double& valueSys, const SystemImpl& sys){
     return sys.getValue() + valueSys;
 }
 
-double  SystemImpl::operator-(const SystemImpl& sys){
+double  SystemImpl::operator-(const System& sys){
     if (this == &sys){
         return 0.0;
     }
@@ -75,7 +75,7 @@ double operator-(const double& valueSys, const SystemImpl& sys){
     return valueSys - sys.getValue();
 }
 
-double SystemImpl::operator*(const SystemImpl& sys){
+double SystemImpl::operator*(const System& sys){
     if (this == &sys){
         return getValue() * sys.getValue();
     }
@@ -91,7 +91,7 @@ double operator*(const double& valueSys, const SystemImpl& sys){
     return valueSys * sys.getValue();
 }
 
-double SystemImpl::operator/(const SystemImpl& sys){
+double SystemImpl::operator/(const System& sys){
     if (this == &sys){
         return 1.0;
     }

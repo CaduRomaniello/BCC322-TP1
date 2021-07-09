@@ -44,46 +44,45 @@ class System{
         */
         virtual double getValue() const = 0;
       
-      
         /*!
             This is the overloaded "+" operator for the System Class.
         */
-        double operator+(const System& sys);
+        virtual double operator+(const System& sys) = 0;
         
         /*!
             This is the overloaded "+" operator for the System Class.
         */
-        double operator+(const double& valueSys);
+        virtual double operator+(const double& valueSys) = 0;
 
         /*!
             This is the overloaded "-" operator for the System Class.
         */
-        double operator-(const System& sys);
+        virtual double operator-(const System& sys) = 0;
         
         /*!
             This is the overloaded "-" operator for the System Class.
         */
-        double operator-(const double& valueSys);
+        virtual double operator-(const double& valueSys) = 0;
 
         /*!
             This is the overloaded "*" operator for the System Class.
         */
-        double operator*(const System& sys);
+        virtual double operator*(const System& sys) = 0;
         
         /*!
             This is the overloaded "*"" operator for the System Class.
         */
-        double operator*(const double& valueSys);
+        virtual double operator*(const double& valueSys) = 0;
 
         /*!
             This is the overloaded "/" operator for the System Class.
         */
-        double operator/(const System& sys);
+        virtual double operator/(const System& sys) = 0;
         
         /*!
             This is the overloaded "/" operator for the System Class.
         */
-        double operator/(const double& valueSys);
+        virtual double operator/(const double& valueSys) = 0;
 
 };
 

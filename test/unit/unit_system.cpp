@@ -140,8 +140,8 @@ void UnitSystem::unit_system_assingmentOperator(){
 
 // Function for System class' "+" operator unit test.
 void unit_system_sumOperator(){
-    SystemImpl* sys1 = new SystemImpl("Population 1", 100.0);
-    SystemImpl* sys2 = new SystemImpl("Population 2", 10.0);
+    System* sys1 = new SystemImpl("Population 1", 100.0);
+    System* sys2 = new SystemImpl("Population 2", 10.0);
 
     cout << "TEST 10 - System class sum operator" << endl;
     assert(((*sys1) + (*sys2)) == 110);
@@ -152,8 +152,8 @@ void unit_system_sumOperator(){
 
 // Function for System class' "-" operator unit test.
 void unit_system_minusOperator(){
-    SystemImpl* sys1 = new SystemImpl("Population 1", 100.0);
-    SystemImpl* sys2 = new SystemImpl("Population 2", 10.0);
+    System* sys1 = new SystemImpl("Population 1", 100.0);
+    System* sys2 = new SystemImpl("Population 2", 10.0);
 
     cout << "TEST 11 - System class subtraction operator" << endl;
     assert(((*sys1) - (*sys2)) == 90);
@@ -164,8 +164,8 @@ void unit_system_minusOperator(){
 
 // Function for System class' "*" operator unit test.
 void unit_system_timesOperator(){
-    SystemImpl* sys1 = new SystemImpl("Population 1", 100.0);
-    SystemImpl* sys2 = new SystemImpl("Population 2", 10.0);
+    System* sys1 = new SystemImpl("Population 1", 100.0);
+    System* sys2 = new SystemImpl("Population 2", 10.0);
 
     cout << "TEST 12 - System class multiplication operator" << endl;
     assert(((*sys1) * (*sys2)) == 1000);
@@ -176,8 +176,8 @@ void unit_system_timesOperator(){
 
 // Function for System class' "/" operator unit test.
 void unit_system_divisionOperator(){
-    SystemImpl* sys1 = new SystemImpl("Population 1", 100.0);
-    SystemImpl* sys2 = new SystemImpl("Population 2", 10.0);
+    System* sys1 = new SystemImpl("Population 1", 100.0);
+    System* sys2 = new SystemImpl("Population 2", 10.0);
 
     cout << "TEST 13 - System class division operator" << endl;
     assert(((*sys1) / (*sys2)) == 10);

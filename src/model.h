@@ -2,8 +2,6 @@
 #define MODEL_H
 
 #include <vector>
-#include <map>
-#include <cstring>
 
 #include "./flow.h"
 

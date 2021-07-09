@@ -81,7 +81,7 @@ void unit_model_destructor(){
 
 // Function for the Model class' getName() method unit test.
 void unit_model_getName(){
-    cout << "TEST 4 - Model class's getName() method" << endl;
+    cout << "TEST 4 - Model class' getName() method" << endl;
     
     Model* model = new ModelImpl("Test Model", 0.0);
     
@@ -94,7 +94,7 @@ void unit_model_getName(){
 
 // Function for the Model class' setName() method unit test.
 void unit_model_setName(){
-    cout << "TEST 5 - Model class's setName() method" << endl;
+    cout << "TEST 5 - Model class' setName() method" << endl;
 
     Model* model = new ModelImpl();
     model->setName("Test Model");
@@ -107,7 +107,7 @@ void unit_model_setName(){
 
 // Function for the Model class' getTime() method unit test.
 void unit_model_getTime(){
-    cout << "TEST 6 - Model class's getTime() method" << endl;
+    cout << "TEST 6 - Model class' getTime() method" << endl;
 
     Model* model = new ModelImpl("Test Model", 0.0);
 
@@ -120,7 +120,7 @@ void unit_model_getTime(){
 
 // Function for the Model class' setTime() method unit test.
 void unit_model_setTime(){
-    cout << "TEST 7 - Model class's setTime() method" << endl;
+    cout << "TEST 7 - Model class' setTime() method" << endl;
 
     Model* model = new ModelImpl("Test Model", 0.0);
     model->setTime(1.0);
@@ -133,7 +133,7 @@ void unit_model_setTime(){
 
 // Function for the Model class' incrementTime() method unit test.
 void unit_model_incrementTime(){
-    cout << "TEST 8 - Model class's incrementTime() method" << endl;
+    cout << "TEST 8 - Model class' incrementTime() method" << endl;
 
     Model* model = new ModelImpl("Test Model", 1.0);
     model->incrementTime(1.0);
@@ -146,7 +146,7 @@ void unit_model_incrementTime(){
 
 // Function for the Model class' addSystem() method unit test.
 void unit_model_addSystem(){
-    cout << "TEST 9 - Model class's addSystem() method" << endl;
+    cout << "TEST 9 - Model class' addSystem() method" << endl;
     
     System* system = new SystemImpl("System 1");
 
@@ -161,7 +161,7 @@ void unit_model_addSystem(){
 
 // Function for the Model class' removeSystem() method unit test.
 void unit_model_removeSystem(){
-    cout << "TEST 10 - Model class's removeSystem() method" << endl;
+    cout << "TEST 10 - Model class' removeSystem() method" << endl;
 
     System* system = new SystemImpl("System 1");
 
@@ -177,7 +177,7 @@ void unit_model_removeSystem(){
 
 // Function for the Model class' addFlow() method unit test.
 void unit_model_addFlow(){
-    cout << "TEST 11 - Model class's addFlow() method" << endl;
+    cout << "TEST 11 - Model class' addFlow() method" << endl;
 
     ExponencialFlow* flow = new ExponencialFlow("Flow 1");
     Model* model = new ModelImpl("Test Model", 1.0);
@@ -191,7 +191,7 @@ void unit_model_addFlow(){
 
 // Function for the Model class' removeFlow() method unit test.
 void unit_model_removeFlow(){
-    cout << "TEST 12 - Model class's removeFlow() method" << endl;
+    cout << "TEST 12 - Model class' removeFlow() method" << endl;
 
     ExponencialFlow* flow = new ExponencialFlow("Flow 1");
     Model* model = new ModelImpl("Test Model", 1.0);
@@ -206,7 +206,7 @@ void unit_model_removeFlow(){
 
 // Function for the Model class' execute() method unit test.
 void unit_model_execute(){
-    cout << "TEST 13 - Model class's execute() method" << endl;
+    cout << "TEST 13 - Model class' execute() method" << endl;
     
     System* pop1 = new SystemImpl("Population 1", 100.0);
     System* pop2 = new SystemImpl("Population 2", 0.0);

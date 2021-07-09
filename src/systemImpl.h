@@ -73,7 +73,7 @@ class SystemImpl : public System{
         /*!
             This is the overloaded "+" operator for the SystemImpl Class.
         */
-        double operator+(const SystemImpl& sys);
+        double operator+(const System& sys);
         
         /*!
             This is the overloaded "+" operator for the SystemImpl Class.
@@ -83,7 +83,7 @@ class SystemImpl : public System{
         /*!
             This is the overloaded "-" operator for the SystemImpl Class.
         */
-        double operator-(const SystemImpl& sys);
+        double operator-(const System& sys);
         
         /*!
             This is the overloaded "-" operator for the SystemImpl Class.
@@ -93,7 +93,7 @@ class SystemImpl : public System{
         /*!
             This is the overloaded "*" operator for the SystemImpl Class.
         */
-        double operator*(const SystemImpl& sys);
+        double operator*(const System& sys);
         
         /*!
             This is the overloaded "*"" operator for the SystemImpl Class.
@@ -103,7 +103,7 @@ class SystemImpl : public System{
         /*!
             This is the overloaded "/" operator for the SystemImpl Class.
         */
-        double operator/(const SystemImpl& sys);
+        double operator/(const System& sys);
         
         /*!
             This is the overloaded "/" operator for the SystemImpl Class.

@@ -80,7 +80,7 @@ void unit_flow_destructor() {
 
 // Function for Flow class' method getName() unit test.
 void unit_flow_getName() {
-    cout << "TEST 5 - Flow class's getName() method" << endl;
+    cout << "TEST 5 - Flow class' getName() method" << endl;
     
     ExponencialFlow* flow = new ExponencialFlow("Flow 1");
 
@@ -93,7 +93,7 @@ void unit_flow_getName() {
 
 // Function for Flow class' method setName() unit test.
 void unit_flow_setName() {
-    cout << "TEST 6 - Flow class's setName() method" << endl;
+    cout << "TEST 6 - Flow class' setName() method" << endl;
 
     ExponencialFlow* flow = new ExponencialFlow();
     flow->setName("Test Flow");
@@ -106,7 +106,7 @@ void unit_flow_setName() {
 
 // Function for Flow class' method getSource() unit test.
 void unit_flow_getSource(){
-    cout << "TEST 7 - Flow class's getSource() method" << endl;
+    cout << "TEST 7 - Flow class' getSource() method" << endl;
     
     System* system = new SystemImpl("Test System");
     ExponencialFlow* flow = new ExponencialFlow("Flow 1", system);
@@ -120,7 +120,7 @@ void unit_flow_getSource(){
 
 // Function for Flow class' method setSource() unit test.
 void unit_flow_setSource(){
-    cout << "TEST 8 - Flow class's setSource() method" << endl;
+    cout << "TEST 8 - Flow class' setSource() method" << endl;
     
     System* system = new SystemImpl("Test System");
     ExponencialFlow* flow1 = new ExponencialFlow("Flow 1");
@@ -134,7 +134,7 @@ void unit_flow_setSource(){
 
 // Function for Flow class' method clearSource() unit test.
 void unit_flow_clearSource(){
-    cout << "TEST 9 - Flow class's clearSource() method" << endl;
+    cout << "TEST 9 - Flow class' clearSource() method" << endl;
     
     System* system = new SystemImpl("Test System");
     ExponencialFlow* flow1 = new ExponencialFlow("Flow 1",system);
@@ -148,7 +148,7 @@ void unit_flow_clearSource(){
 
 // Function for Flow class' method getTarget() unit test.
 void unit_flow_getTarget(){
-    cout << "TEST 10 - Flow class's getTarget() method" << endl;
+    cout << "TEST 10 - Flow class' getTarget() method" << endl;
     
     System* system = new SystemImpl("Test System"); 
     ExponencialFlow* flow = new ExponencialFlow("Flow 1",NULL,system);    
@@ -162,7 +162,7 @@ void unit_flow_getTarget(){
 
 // Function for Flow class' method setTarget() unit test.
 void unit_flow_setTarget(){
-    cout << "TEST 11 - Flow class's setTarget() method" << endl;
+    cout << "TEST 11 - Flow class' setTarget() method" << endl;
     
     System* system = new SystemImpl("Test System");
     ExponencialFlow* flow = new ExponencialFlow("Flow 1");
@@ -176,7 +176,7 @@ void unit_flow_setTarget(){
 
 // Function for Flow class' method clearTarget() unit test.
 void unit_flow_clearTarget(){
-    cout << "TEST 12 - Flow class's clearTarget() method" << endl;
+    cout << "TEST 12 - Flow class' clearTarget() method" << endl;
     
     System* system = new SystemImpl("Test System");
     ExponencialFlow* flow = new ExponencialFlow("Flow", NULL, system); 
@@ -190,7 +190,7 @@ void unit_flow_clearTarget(){
 
 // Function for Flow class' assingment operator unit test.
 void UnitFlow::unit_flow_assingmentOperator(){
-    cout << "TEST 13 - Flow class assignment operator" << endl;
+    cout << "TEST 13 - Flow class' assignment operator" << endl;
     
     System* sys1 = new SystemImpl("Sys 1", 5.0);
     System* sys2 = new SystemImpl("Sys 2", 6.0);
@@ -215,7 +215,7 @@ void UnitFlow::unit_flow_assingmentOperator(){
 
 // Function for Flow class' execute method unit test.
 void unit_flow_execute(){
-    cout << "TEST 14 - Flow class's execute() method" << endl;
+    cout << "TEST 14 - Flow class' execute() method" << endl;
     
     System* system1 = new SystemImpl("Test System 1", 10.0);
     System* system2 = new SystemImpl("Test System 2", 0.0);
