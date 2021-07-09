@@ -1,13 +1,8 @@
 #ifndef UNIT_FLOW
 #define UNIT_FLOW
 
-#include <assert.h>
-#include <iostream>
-#include <string>
-
 #include "../../src/systemImpl.h"
 #include "../../src/flowImpl.h"
-#include "../../src/system.h"
 #include "./utils/mem_usage.h"
 
 #define RESET "\033[0m"  /* Escape sequence to reset color output to default. */

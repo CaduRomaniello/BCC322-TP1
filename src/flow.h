@@ -1,8 +1,6 @@
 #ifndef FLOW_H
 #define FLOW_H
 
-#include <string>
-#include <iostream>
 #include "./system.h"
 
 using namespace std;

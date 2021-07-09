@@ -1,4 +1,5 @@
 #include "unit_flow.h"
+#include <assert.h>
 
 // Function for flow's constructor unit test.
 void unit_flow_constructor() {

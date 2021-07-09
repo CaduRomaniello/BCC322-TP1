@@ -3,7 +3,6 @@
 
 #include "../../src/flowImpl.h"
 #include "../../src/systemImpl.h"
-#include "../../src/flow.h"
 #include "../../src/modelImpl.h"
 
 #define RESET "\033[0m"  /* Escape sequence to reset color output to default. */

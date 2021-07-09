@@ -1,4 +1,5 @@
 #include "unit_model.h"
+#include <assert.h>
 
 using namespace std;
 

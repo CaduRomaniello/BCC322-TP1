@@ -2,12 +2,9 @@
 #define MODEL_H
 
 #include <vector>
-#include <iostream>
-#include <stdlib.h>
 #include <map>
 #include <cstring>
 
-#include "./system.h"
 #include "./flow.h"
 
 using namespace std;

@@ -1,11 +1,7 @@
 #ifndef MAIN_UNIT_TESTS
 #define MAIN_UNIT_TESTS
 
-#include "../../src/model.h"
-#include "../../src/system.h"
-#include "../../src/flow.h"
 #include "./unit_system.h"
-#include "./unit_flow.h"
 #include "./unit_model.h"
 #include "./unit_tests.h"
 

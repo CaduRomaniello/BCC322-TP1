@@ -3,10 +3,6 @@
 
 #include "funcional_tests.h"
 
-#include "../../src/model.h"
-#include "../../src/system.h"
-#include "../../src/flow.h"
-
 int main(){
 
     exponentialFuncionalTest();

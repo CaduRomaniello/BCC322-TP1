@@ -1,10 +1,7 @@
 #ifndef FLOWIMPL_H
 #define FLOWIMPL_H
 
-#include <string>
-#include <iostream>
 #include "./flow.h"
-#include "./system.h"
 
 using namespace std;
 

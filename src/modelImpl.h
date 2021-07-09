@@ -2,7 +2,6 @@
 #define MODELIMPL_H
 
 #include "./model.h"
-#include "./system.h"
 
 using namespace std;
 

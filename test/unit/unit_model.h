@@ -1,15 +1,7 @@
 #ifndef UNIT_MODEL
 #define UNIT_MODEL
 
-#include <assert.h>
-#include <iostream>
-#include <string>
-#include <vector>
-
-#include "../../src/modelImpl.h" 
-#include "../../src/systemImpl.h"
-#include "../../src/flowImpl.h"
-#include "../../src/model.h"
+#include "../../src/modelImpl.h"
 #include "./unit_flow.h"
 
 #define RESET "\033[0m"  /* Escape sequence to reset color output to default. */
