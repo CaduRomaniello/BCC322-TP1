@@ -113,9 +113,9 @@ class SystemImpl : public System{
 };
 
 
-double operator+(const double& valueSys, const SystemImpl& sys);
-double operator-(const double& valueSys, const SystemImpl& sys);
-double operator*(const double& valueSys, const SystemImpl& sys);
-double operator/(const double& valueSys, const SystemImpl& sys);
+double operator+(const double& valueSys, const System& sys);
+double operator-(const double& valueSys, const System& sys);
+double operator*(const double& valueSys, const System& sys);
+double operator/(const double& valueSys, const System& sys);
 
 #endif

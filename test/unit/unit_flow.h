@@ -5,8 +5,8 @@
 #include "../../src/flowImpl.h"
 #include "./utils/mem_usage.h"
 
-#define RESET "\033[0m"  /* Escape sequence to reset color output to default. */
-#define GREEN "\033[32m" /* Escape sequence to a green color output. */
+#define RESET "\033[0m"  /*! Escape sequence to reset color output to default. */
+#define GREEN "\033[32m" /*! Escape sequence to a green color output. */
 using namespace std;
 
 //! Unit tests 

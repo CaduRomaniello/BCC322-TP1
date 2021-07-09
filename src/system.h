@@ -86,10 +86,4 @@ class System{
 
 };
 
-
-double operator+(const double& valueSys, const System& sys);
-double operator-(const double& valueSys, const System& sys);
-double operator*(const double& valueSys, const System& sys);
-double operator/(const double& valueSys, const System& sys);
-
 #endif
